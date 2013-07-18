@@ -1,0 +1,22 @@
+Bowling
+=======
+
+Bowling Game designed as a state machine.  
+
+I refactored Uncle Bob's code from the XP Bowling episode.  One problem I saw with Unlce Bob's code was that 
+one object was both aggregating frame scores as well as scoring each frame. 
+
+I tried many designs, but I found the design using the state pattern as the only satisfactory one.
+
+With this design, Bowling just aggregates frame scores, and the logic for scoring a frame is distributed
+between Frame and its State objects.
+
+This design is also based on what I learned about OO from:
+
+- Kent Beck's Implementation Patterns
+- Kent Beck's Test-Driven Development
+- Object Calisthenics by Jeff Bay in Thoughtworks Anthology
+- Law of Demeter
+- Dependency Injection
+- "Tell, don't ask" principle by Dave Thomas & Andy Hunt
+- Fred George's presentation at Agile India 2013 in Bangalore
