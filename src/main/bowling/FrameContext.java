@@ -1,10 +1,10 @@
 package bowling;
 
 public class FrameContext {
-    private RollContext context;
+    private GameContext context;
     private Frame frame;
 
-    public FrameContext(Frame frame, RollContext context) {
+    public FrameContext(Frame frame, GameContext context) {
         this.frame=frame;
         this.context=context;        
     }

@@ -8,11 +8,11 @@ public class FrameContextFactory {
 	}
 
 	public FrameContext create(int frameIndex, Frame frame) {
-		RollContext context=new RollContext(game, frameNumer(frameIndex));
+		GameContext context=new GameContext(game, frame(frameIndex));
 		return new FrameContext(frame, context);
 	}
 
-	private int frameNumer(int frameIndex) {
+	private int frame(int frameIndex) {
 		return frameIndex+1;
 	}
 }

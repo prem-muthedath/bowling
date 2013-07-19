@@ -1,10 +1,10 @@
 package bowling;
 
-public class RollContext {
+public class GameContext {
     private  Bowling game;
     private int frame;
 
-    public RollContext(Bowling game, int frame) {
+    public GameContext(Bowling game, int frame) {
         this.game=game;
         this.frame=frame;
     }
