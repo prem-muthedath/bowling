@@ -1,14 +1,14 @@
 package bowling.states;
 
-import bowling.RollContext;
+import bowling.FrameContext;
 import bowling.State;
 
 public class ScoredState extends State {
-	public void count(RollContext context, int pins) {
+	public void count(FrameContext context, int pins) {
 		super.count(context, 0);
 	}
 
-	protected State transition(RollContext context, boolean allPins) {
+	protected State transition(FrameContext context, boolean allPins) {
 		return Transition.SCORED.next(this, context);			
 	}
 

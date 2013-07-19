@@ -13,9 +13,9 @@ public class Bowling {
 
     public void roll(int pins) {
         int last=frames.size();
-        RollContextFactory factory=new RollContextFactory(this);
+        FrameContextFactory factory=new FrameContextFactory(this);
         for(int frame=0; frame < last; frame++) {
-            RollContext context=factory.create(frame, frames.get(frame));
+            FrameContext context=factory.create(frame, frames.get(frame));
             frames.get(frame).count(context, pins);
         }
     }

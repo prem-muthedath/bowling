@@ -1,19 +1,19 @@
 package bowling;
 
 public class FrameContext {
-    private  Bowling game;
-    private int index;
+    private RollContext context;
+    private Frame frame;
 
-    public FrameContext(Bowling game, int index) {
-        this.game=game;
-        this.index=index;
+    public FrameContext(Frame frame, RollContext context) {
+        this.frame=frame;
+        this.context=context;        
+    }
+
+    public void transition(int pins) {
+        frame.transition(this, pins);
     }
 
     public void advance() {
-        if(notLast()) game.advance();
+        context.advance();
     }
-
-    private boolean notLast() {
-        return !Tenpin.TOTAL_FRAMES.equals(index+1);
-    }    
 }

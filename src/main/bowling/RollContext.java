@@ -1,19 +1,19 @@
 package bowling;
 
 public class RollContext {
-    private FrameContext context;
-    private Frame frame;
+    private  Bowling game;
+    private int frame;
 
-    public RollContext(Frame frame, FrameContext context) {
+    public RollContext(Bowling game, int frame) {
+        this.game=game;
         this.frame=frame;
-        this.context=context;        
-    }
-
-    public void transition(int pins) {
-        frame.transition(this, pins);
     }
 
     public void advance() {
-        context.advance();
+        if(notLastFrame()) game.advance();
     }
+
+    private boolean notLastFrame() {
+        return !Tenpin.TOTAL_FRAMES.equals(frame);
+    }    
 }
