@@ -8,13 +8,16 @@ public class Bowling {
     }
 
     void advance() {
-        frames.add(new Frame(this, frames.size()));        
+        frames.add(new Frame());        
     }
 
     public void roll(int pins) {
         int last=frames.size();
-        for(int frame=0; frame < last; frame++)
-            frames.get(frame).count(pins);
+        RollContextFactory factory=new RollContextFactory(this);
+        for(int frame=0; frame < last; frame++) {
+            RollContext context=factory.create(frame, frames.get(frame));
+            frames.get(frame).count(context, pins);
+        }
     }
 
     public int score() {

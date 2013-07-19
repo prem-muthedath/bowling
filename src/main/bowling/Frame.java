@@ -1,32 +1,29 @@
-package bowling; 
+package bowling;
+
+import bowling.states.FirstRollState;
 
 public class Frame {
-	private Bowling game;	
-	private int index;
-	private Turn turn=new Turn();
+	private int pinfall=0;
+	private State state;
 
-	public Frame(Bowling game, int index) {
-		this.game=game;
-		this.index=index;		
+	public Frame() {
+		this.state=new FirstRollState();
 	}
 
-	public void count(int pins) {
-		turn.count(this, pins);
+	public void count(RollContext context, int pins) {
+		state.count(context, pins);
 	}
 
-	void transition(int pins) {
-		turn.transition(this, pins);
+	void transition(RollContext context, int pins) {
+		pinfall+=pins;	
+		this.state=state.next(context, allPins());
 	}
+
+	private boolean allPins() {
+		return Tenpin.ALL_PINS.equals(pinfall);
+	}	
 
 	public int score() {
-		return turn.score();
-	}
-
-	void advance() {
-		if(notLast()) game.advance();
-	}
-
-    private boolean notLast() {
-        return !Tenpin.TOTAL_FRAMES.equals(index+1);
-    }
+		return state.score(pinfall);
+	}		
 }

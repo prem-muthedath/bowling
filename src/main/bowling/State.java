@@ -1,22 +1,22 @@
 package bowling; 
 
 public abstract class State {
-	public void count(Frame frame, int pins) {
-		frame.transition(pins);
+	public void count(RollContext context, int pins) {
+		context.transition(pins);
 	}
 
-	public State next(Frame frame, boolean allPins) {
-		exit(frame);
-		return transition(frame, allPins);
+	public State next(RollContext context, boolean allPins) {
+		exit(context);
+		return transition(context, allPins);
 	}
 	
-	protected abstract State transition(Frame frame, boolean allPins);
+	protected abstract State transition(RollContext context, boolean allPins);
 
-	protected void exit(Frame frame) {}
-	public void enter(Frame frame) {}
+	protected void exit(RollContext context) {}
+	public void enter(RollContext context) {}
 
-	protected void advance(Frame frame) {
-		frame.advance();
+	protected void advance(RollContext context) {
+		context.advance();
 	}
 
 	public int score(int pinfall) {

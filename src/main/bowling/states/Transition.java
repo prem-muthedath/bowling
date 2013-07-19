@@ -1,14 +1,14 @@
 package bowling.states;
 
-import bowling.Frame;
+import bowling.RollContext;
 import bowling.State;
 
 public enum Transition {
 	FIRST_ROLL, STRIKE, SPARE, OPEN, STRIKE_BONUS_ONE, STRIKE_BONUS_TWO, SPARE_BONUS, SCORED;
 
-	public State next(State source, Frame frame) {
+	public State next(State source, RollContext context) {
 		if(done()) return source;
-		target().enter(frame);
+		target().enter(context);
 		return target();
 	}
 
