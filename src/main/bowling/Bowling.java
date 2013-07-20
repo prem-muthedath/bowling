@@ -12,12 +12,12 @@ public class Bowling {
     }
 
     public void roll(int pins) {
-        int last=frames.size();
-        FrameContextFactory factory=new FrameContextFactory(this);
-        for(int frame=0; frame < last; frame++) {
-            FrameContext context=factory.create(frame, frames.get(frame));
-            frames.get(frame).count(context, pins);
-        }
+        new GameState(this, frames.size()).roll(pins);
+    }
+
+    void count(GameState state, int currentFrame, int pins)  {
+        for(int frame=0; frame < currentFrame; frame++)
+            frames.get(frame).count(state, pins);          
     }
 
     public int score() {

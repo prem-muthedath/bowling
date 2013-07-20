@@ -10,8 +10,8 @@ public class Frame {
 		this.state=new FirstRollState();
 	}
 
-	public void count(FrameContext context, int pins) {
-		state.count(context, pins);
+	public void count(GameState gameState, int pins) {
+		state.count(new FrameContext(this, gameState), pins);
 	}
 
 	void transition(FrameContext context, int pins) {

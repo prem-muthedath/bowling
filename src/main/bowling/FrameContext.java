@@ -1,12 +1,12 @@
 package bowling;
 
 public class FrameContext {
-    private GameContext context;
+    private GameState state;
     private Frame frame;
 
-    public FrameContext(Frame frame, GameContext context) {
+    public FrameContext(Frame frame, GameState state) {
         this.frame=frame;
-        this.context=context;        
+        this.state=state;        
     }
 
     public void transition(int pins) {
@@ -14,6 +14,6 @@ public class FrameContext {
     }
 
     public void advance() {
-        context.advance();
+        state.advance();
     }
 }
