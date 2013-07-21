@@ -14,10 +14,10 @@ public class Play {
     }
 
     void advance() {
-        if(notDone()) game.advance();
+        if(notLast()) game.advance();
     }
 
-    private boolean notDone() {
+    private boolean notLast() {
         return !Tenpin.TOTAL_FRAMES.equals(framesPlayed());
     }   
 
