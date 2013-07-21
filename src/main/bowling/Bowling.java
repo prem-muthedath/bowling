@@ -14,7 +14,7 @@ public class Bowling {
 
     void count(Play play, int currentFrame, int pins)  {
         for(int frame=0; frame < currentFrame; frame++)
-            frames.get(frame).count(pins, play);  
+            frames.get(frame).count(play, pins);  
     }
 
     public int score() {

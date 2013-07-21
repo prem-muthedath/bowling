@@ -10,7 +10,7 @@ public class Frame {
 		this.state=new FirstRollState();
 	}
 
-	public void count(int pins, Play play) {
+	public void count(Play play, int pins) {
 		state.count(new AdvancingFrame(this, play), pins);
 	}
 
