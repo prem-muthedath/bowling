@@ -1,14 +1,14 @@
 package bowling.states;
 
-import bowling.FrameContext;
+import bowling.AdvancingFrame;
 import bowling.State;
 
 public class StrikeBonusOneState extends State {
-	protected State transition(FrameContext context, boolean allPins) {
-		return Transition.STRIKE_BONUS_ONE.next(this, context);
+	protected State transition(AdvancingFrame frame, boolean allPins) {
+		return Transition.STRIKE_BONUS_ONE.next(this, frame);
 	}
 
-	public void enter(FrameContext context) {
-		advance(context);
+	public void enter(AdvancingFrame frame) {
+		advance(frame);
 	}
 }

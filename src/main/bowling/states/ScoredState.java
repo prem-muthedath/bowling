@@ -1,15 +1,15 @@
 package bowling.states;
 
-import bowling.FrameContext;
+import bowling.AdvancingFrame;
 import bowling.State;
 
 public class ScoredState extends State {
-	public void count(FrameContext context, int pins) {
-		super.count(context, 0);
+	public void count(AdvancingFrame frame, int pins) {
+		super.count(frame, 0);
 	}
 
-	protected State transition(FrameContext context, boolean allPins) {
-		return Transition.SCORED.next(this, context);			
+	protected State transition(AdvancingFrame frame, boolean allPins) {
+		return Transition.SCORED.next(this, frame);			
 	}
 
 	public int score(int pinfall) {

@@ -1,10 +1,10 @@
 package bowling;
 
-public class GameState {
+public class Play {
     private Bowling game;
     private int currentFrame;
 
-    public GameState(Bowling game, int currentFrame) {
+    public Play(Bowling game, int currentFrame) {
         this.game=game;
         this.currentFrame=currentFrame;
     }

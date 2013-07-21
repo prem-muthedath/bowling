@@ -1,15 +1,15 @@
 package bowling.states;
 
-import bowling.FrameContext;
+import bowling.AdvancingFrame;
 import bowling.State;
 
 public class SecondRollState extends State {
-	protected State transition(FrameContext context, boolean allPins) {
-		if(allPins) return Transition.SPARE.next(this, context);
-		return Transition.OPEN.next(this, context);
+	protected State transition(AdvancingFrame frame, boolean allPins) {
+		if(allPins) return Transition.SPARE.next(this, frame);
+		return Transition.OPEN.next(this, frame);
 	}
 
-	protected void exit(FrameContext context) {
-		advance(context);
+	protected void exit(AdvancingFrame frame) {
+		advance(frame);
 	}
 }

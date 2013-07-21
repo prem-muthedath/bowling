@@ -10,13 +10,13 @@ public class Frame {
 		this.state=new FirstRollState();
 	}
 
-	public void count(GameState gameState, int pins) {
-		state.count(new FrameContext(this, gameState), pins);
+	public void count(AdvancingFrame frame, int pins) {
+		state.count(frame, pins);
 	}
 
-	void transition(FrameContext context, int pins) {
+	void transition(AdvancingFrame frame, int pins) {
 		pinfall+=pins;	
-		this.state=state.next(context, allPins());
+		this.state=state.next(frame, allPins());
 	}
 
 	private boolean allPins() {

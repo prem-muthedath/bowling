@@ -1,11 +1,11 @@
 package bowling.states;
 
-import bowling.FrameContext;
+import bowling.AdvancingFrame;
 import bowling.State;
 
 public class FirstRollState extends State {
-	protected State transition(FrameContext context, boolean allPins) {
-		if(allPins) return Transition.STRIKE.next(this, context);
-		return Transition.FIRST_ROLL.next(this, context);
+	protected State transition(AdvancingFrame frame, boolean allPins) {
+		if(allPins) return Transition.STRIKE.next(this, frame);
+		return Transition.FIRST_ROLL.next(this, frame);
 	}
 }

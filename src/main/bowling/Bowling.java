@@ -3,21 +3,20 @@ package bowling;
 public class Bowling {
 	private java.util.ArrayList <Frame> frames=new java.util.ArrayList<Frame>();
 
-    public Bowling() {
-        advance();
-    }
-
     void advance() {
         frames.add(new Frame());        
     }
 
     public void roll(int pins) {
-        new GameState(this, frames.size()).roll(pins);
+        if(frames.size()==0) advance();
+        new Play(this, frames.size()).roll(pins);
     }
 
-    void count(GameState state, int currentFrame, int pins)  {
-        for(int frame=0; frame < currentFrame; frame++)
-            frames.get(frame).count(state, pins);          
+    void count(Play play, int currentFrame, int pins)  {
+        for(int frame=0; frame < currentFrame; frame++) {
+            Frame each=frames.get(frame);
+            new AdvancingFrame(each, play).count(pins);  
+        }        
     }
 
     public int score() {
