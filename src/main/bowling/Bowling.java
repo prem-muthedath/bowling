@@ -13,10 +13,8 @@ public class Bowling {
     }
 
     void count(Play play, int currentFrame, int pins)  {
-        for(int frame=0; frame < currentFrame; frame++) {
-            Frame each=frames.get(frame);
-            new AdvancingFrame(each, play).count(pins);  
-        }        
+        for(int frame=0; frame < currentFrame; frame++)
+            frames.get(frame).count(pins, play);  
     }
 
     public int score() {
