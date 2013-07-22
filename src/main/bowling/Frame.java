@@ -11,12 +11,12 @@ public class Frame {
 	}
 
 	public void count(Play play, int pins) {
-		state.count(new AdvancingFrame(this, play), pins);
+		state.count(this, play, pins);
 	}
 
-	void transition(AdvancingFrame frame, int pins) {
+	void transition(Play play, int pins) {
 		pinfall+=pins;	
-		this.state=state.next(frame, allPins());
+		this.state=state.next(play, allPins());
 	}
 
 	private boolean allPins() {

@@ -1,10 +1,10 @@
 package bowling.states;
 
-import bowling.AdvancingFrame;
+import bowling.Play;
 import bowling.State;
 
 public class SpareBonusState extends State {
-	protected State transition(AdvancingFrame frame, boolean allPins) {
-		return Transition.SPARE_BONUS.next(this, frame);
+	protected State transition(Play play, boolean allPins) {
+		return Transition.SPARE_BONUS.next(this, play);
 	}
 }
