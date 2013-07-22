@@ -8,19 +8,19 @@ public enum Transition {
 
 	public State next(State source, Play play) {
 		if(done()) return source;
-		target().enter(play);
-		return target();
+		target(play).enter();
+		return target(play);
 	}
 
-	private State target() {
+	private State target(Play play) {
 		switch(this) {
-			case FIRST_ROLL: return new SecondRollState();
-			case STRIKE: return new StrikeBonusOneState();
-			case SPARE: return new SpareBonusState();
-			case OPEN: return new ScoredState();
-			case STRIKE_BONUS_ONE: return new StrikeBonusTwoState();
-			case STRIKE_BONUS_TWO: return new ScoredState();
-			case SPARE_BONUS: return new ScoredState();
+			case FIRST_ROLL: return new SecondRollState(play);
+			case STRIKE: return new StrikeBonusOneState(play);
+			case SPARE: return new SpareBonusState(play);
+			case OPEN: return new ScoredState(play);
+			case STRIKE_BONUS_ONE: return new StrikeBonusTwoState(play);
+			case STRIKE_BONUS_TWO: return new ScoredState(play);
+			case SPARE_BONUS: return new ScoredState(play);
 		}
 		return null;
 	}

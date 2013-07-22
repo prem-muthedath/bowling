@@ -9,11 +9,7 @@ public class Play {
         this.currentFrame=currentFrame;
     }
 
-    public void roll(int pins) {        
-    	game.count(this, currentFrame, pins);
-    }
-
-    void advance() {
+    public void advance() {
         if(notLast()) game.advance();
     }
 
@@ -22,6 +18,6 @@ public class Play {
     }   
 
     private int framesPlayed() {
-        return currentFrame;
+        return currentFrame+1;
     }    
 }

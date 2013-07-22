@@ -1,22 +1,20 @@
 package bowling;
 
-import bowling.states.FirstRollState;
-
-public class Frame {
+public class Frame {	
 	private int pinfall=0;
 	private State state;
 
-	public Frame() {
-		this.state=new FirstRollState();
+	public Frame(State state) {
+		this.state=state;
 	}
 
-	public void count(Play play, int pins) {
-		state.count(this, play, pins);
+	public void count(int pins) {
+		state.count(this, pins);
 	}
 
-	void transition(Play play, int pins) {
+	void transition(int pins) {
 		pinfall+=pins;	
-		this.state=state.next(play, allPins());
+		this.state=state.next(allPins());
 	}
 
 	private boolean allPins() {
