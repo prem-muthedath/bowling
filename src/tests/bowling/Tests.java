@@ -19,6 +19,7 @@ public class Tests {
         tests.testUnfinishedSpare();
         tests.testUnfinishedStrike();
         tests.testUnfinishedOpen();
+        tests.testMoreThanAllowedFrames();
 	}
 
 	private void testPerfectGame() {
@@ -162,4 +163,11 @@ public class Tests {
         System.out.println("3: "+game.score());        
     }  
 
+    public void testMoreThanAllowedFrames()  {
+        Bowling game=new Bowling();     
+        game.roll(2);
+        game.roll(5);
+        game.roll(3);
+        System.out.println("7: "+game.score(200));        
+    }  
 }

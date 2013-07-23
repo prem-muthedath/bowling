@@ -1,11 +1,11 @@
 package bowling.states;
 
-import bowling.Play;
+import bowling.Bowling;
 import bowling.State;
 
 public class ScoredState extends State {
-	public ScoredState(Play play) {
-		super(play);
+	public ScoredState(Bowling game) {
+		super(game);
 	}
 
 	protected int pins(int pins) {
@@ -13,10 +13,12 @@ public class ScoredState extends State {
 	}
 
 	public State next(boolean allPins) {
-		return Transition.SCORED.next(this, play());			
+		return Transition.SCORED.next(this, game());			
 	}
 
 	public int score(int pinfall) {
 		return pinfall;
 	}
+
+	protected void advance() {}	
 }

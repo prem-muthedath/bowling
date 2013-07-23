@@ -1,11 +1,11 @@
 package bowling.states;
 
-import bowling.Play;
+import bowling.Bowling;
 import bowling.State;
 
 public class SecondRollState extends State {
-	public SecondRollState(Play play) {
-		super(play);
+	public SecondRollState(Bowling game) {
+		super(game);
 	}
 
 	public State next(boolean allPins) {
@@ -18,7 +18,7 @@ public class SecondRollState extends State {
 	}
 
 	private State transition(boolean allPins) {
-		if(allPins) return Transition.SPARE.next(this, play());
-		return Transition.OPEN.next(this, play());		
+		if(allPins) return Transition.SPARE.next(this, game());
+		return Transition.OPEN.next(this, game());		
 	}
 }
