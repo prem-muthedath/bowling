@@ -1,10 +1,10 @@
 package bowling; 
 
 public abstract class State {
-	private Bowling game;
+	private Transition transition;
 
-	public State(Bowling game) {
-		this.game=game;
+	public State(Transition transition) {
+		this.transition=transition;
 	}
 
 	public void count(Frame frame, int pins) {
@@ -15,19 +15,13 @@ public abstract class State {
 		return pins;
 	}	
 
-	public abstract State next(boolean allPins);
+	public State next(boolean allPins) {
+		return transition.next(this, event(allPins));
+	}
 
-	protected void advance() {
-		game.advance();
-	}	
-
-	public void enter() {}
+	protected abstract Transition.Event event(boolean allPins);
 
 	public int score(int pinfall) {
 		return 0;
-	}
-
-	protected Bowling game() {
-		return game;
 	}
 }

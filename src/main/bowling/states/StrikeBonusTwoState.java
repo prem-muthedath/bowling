@@ -1,16 +1,14 @@
 package bowling.states;
 
-import bowling.Bowling;
+import bowling.Transition;
 import bowling.State;
 
 public class StrikeBonusTwoState extends State {
-	public StrikeBonusTwoState(Bowling game) {
-		super(game);
+	public StrikeBonusTwoState(Transition transition) {
+		super(transition);
 	}
 
-	public State next(boolean allPins) {
-		return Transition.STRIKE_BONUS_TWO.next(this, game());
+	protected Transition.Event event(boolean allPins) {
+		return Transition.Event.STRIKE_BONUS_TWO;		
 	}
-
-	protected void advance() {}
 }

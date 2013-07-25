@@ -1,16 +1,14 @@
 package bowling.states;
 
-import bowling.Bowling;
+import bowling.Transition;
 import bowling.State;
 
 public class SpareBonusState extends State {
-	public SpareBonusState(Bowling game) {
-		super(game);
+	public SpareBonusState(Transition transition) {
+		super(transition);
 	}
 
-	public State next(boolean allPins) {
-		return Transition.SPARE_BONUS.next(this, game());
+	protected Transition.Event event(boolean allPins) {
+		return Transition.Event.SPARE_BONUS;		
 	}
-
-	protected void advance() {}	
 }

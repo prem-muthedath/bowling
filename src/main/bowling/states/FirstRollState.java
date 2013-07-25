@@ -1,17 +1,15 @@
 package bowling.states;
 
-import bowling.Bowling;
+import bowling.Transition;
 import bowling.State;
 
 public class FirstRollState extends State {
-	public FirstRollState(Bowling game) {
-		super(game);
+	public FirstRollState(Transition transition) {
+		super(transition);
 	}
 
-	public State next(boolean allPins) {
-		if(allPins) return Transition.STRIKE.next(this, game());
-		return Transition.FIRST_ROLL.next(this, game());
+	protected Transition.Event event(boolean allPins) {
+		if(allPins) return Transition.Event.STRIKE;
+		return Transition.Event.FIRST_ROLL;		
 	}
-
-	protected void advance() {}	
 }
