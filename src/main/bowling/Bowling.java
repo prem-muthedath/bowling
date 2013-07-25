@@ -8,7 +8,7 @@ public class Bowling {
         count(pins, frames.size());
     }
 
-    public void advance() {
+    void advance() {
         if(notDone()) frames.add(FrameFactory.create(this));        
     }
 
