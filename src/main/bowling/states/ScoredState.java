@@ -1,10 +1,9 @@
 package bowling.states;
 
-import bowling.Transition;
 import bowling.State;
 
 public class ScoredState extends State {
-	public ScoredState(Transition transition) {
+	public ScoredState(StateTransition transition) {
 		super(transition);
 	}
 
@@ -12,8 +11,8 @@ public class ScoredState extends State {
 		return 0;
 	}
 
-	protected Transition.Event event(boolean allPins) {
-		return Transition.Event.SCORED;		
+	protected Event event(boolean allPins) {
+		return Event.SCORED;		
 	}
 
 	public int score(int pinfall) {

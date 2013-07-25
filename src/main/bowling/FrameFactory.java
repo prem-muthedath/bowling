@@ -5,7 +5,7 @@ import bowling.states.FirstRollState;
 
 public class FrameFactory {
 	public static Frame create(Bowling game) {
-		Transition transition=new StateTransition(game);
+		StateTransition transition=new StateTransition(game);
 		FirstRollState state=new FirstRollState(transition);
 		return new Frame(state);
 	}

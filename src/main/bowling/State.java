@@ -1,5 +1,7 @@
 package bowling; 
 
+import bowling.states.Event;
+
 public abstract class State {
 	private Transition transition;
 
@@ -19,7 +21,7 @@ public abstract class State {
 		return transition.next(this, event(allPins));
 	}
 
-	protected abstract Transition.Event event(boolean allPins);
+	protected abstract Event event(boolean allPins);
 
 	public int score(int pinfall) {
 		return 0;
