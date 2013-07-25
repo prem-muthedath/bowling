@@ -1,6 +1,7 @@
 package bowling;
 
-public interface Transition {
+public abstract class Transition {
+	private Bowling game;
 	public enum Event {
 		FIRST_ROLL, 
 		STRIKE, 
@@ -12,5 +13,13 @@ public interface Transition {
 		SCORED
 	};
 
-	public State next(State source, Event event);
+	public Transition(Bowling game) {
+		this.game=game;
+	}
+
+	public abstract State next(State source, Event event);
+
+	protected void advance() {
+		game.advance();
+	}
 }

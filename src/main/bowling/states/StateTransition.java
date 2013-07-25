@@ -4,14 +4,12 @@ import bowling.Bowling;
 import bowling.State;
 import bowling.Transition;
 
-public class StateTransition implements Transition {
-	private Bowling game;
-
+public class StateTransition extends Transition {
 	public StateTransition(Bowling game) {
-		this.game=game;
+		super(game);
 	}
 
-	public State next(State source, Transition.Event event) {
+	public State next(State source, Event event) {
 		switch(event) {
 			case SCORED: return source;
 			case FIRST_ROLL: return new SecondRollState(this);
@@ -26,7 +24,7 @@ public class StateTransition implements Transition {
 	}
 
 	private State advance(State target) {
-		game.advance();
+		advance();
 		return target;
 	}
 }
