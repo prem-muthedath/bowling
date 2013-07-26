@@ -1,6 +1,6 @@
 package bowling;
 
-public enum Tenpin {
+enum Tenpin {
     TOTAL_FRAMES (10), ALL_PINS (10);
 
     private final int value;    

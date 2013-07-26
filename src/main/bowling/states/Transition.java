@@ -1,15 +1,15 @@
 package bowling.states;
 
 import bowling.Bowling;
-import bowling.State;
-import bowling.Transition;
 
-public class StateTransition extends Transition {
-	public StateTransition(Bowling game) {
-		super(game);
+public class Transition {
+	private Bowling game;
+
+	public Transition(Bowling game) {
+		this.game=game;
 	}
 
-	public State next(State source, Event event) {
+	public AbstractState next(AbstractState source, Event event) {
 		switch(event) {
 			case SCORED: return source;
 			case FIRST_ROLL: return new SecondRollState(this);
@@ -23,8 +23,8 @@ public class StateTransition extends Transition {
 		return null;
 	}
 
-	private State advance(State target) {
-		advance();
+	private AbstractState advance(AbstractState target) {
+		game.advance();
 		return target;
 	}
 }

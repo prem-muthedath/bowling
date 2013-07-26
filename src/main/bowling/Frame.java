@@ -4,15 +4,15 @@ public class Frame {
 	private int pinfall=0;
 	private State state;
 
-	public Frame(State state) {
-		this.state=state;
+	public Frame(State initialState) {
+		this.state=initialState;
 	}
 
 	public void count(int pins) {
 		state.count(this, pins);
 	}
 
-	void transition(int pins) {
+	public void transition(int pins) {
 		pinfall+=pins;	
 		this.state=state.next(allPins());
 	}

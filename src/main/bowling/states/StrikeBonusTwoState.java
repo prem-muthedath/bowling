@@ -1,9 +1,7 @@
 package bowling.states;
 
-import bowling.State;
-
-public class StrikeBonusTwoState extends State {
-	public StrikeBonusTwoState(StateTransition transition) {
+class StrikeBonusTwoState extends AbstractState {
+	public StrikeBonusTwoState(Transition transition) {
 		super(transition);
 	}
 
