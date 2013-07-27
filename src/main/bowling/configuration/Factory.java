@@ -17,7 +17,7 @@ public class Factory {
 		for(int i=0; i < frames.length; i++) {
 			State state=new FirstBall();
 			frames[i]=new Frame(state);
-    	}
+		}
 		return frames;
 	}
 }
