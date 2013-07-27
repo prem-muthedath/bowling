@@ -22,15 +22,19 @@ public class Tests {
         tests.testMoreThanAllowedFrames();
 	}
 
+    private Bowling bowling() {
+        return new Bowling();
+    }
+
 	private void testPerfectGame() {
-		Bowling game=new Bowling();
+		Bowling game=bowling();
 		for (int i=0; i<12; i++)
       		game.roll(10);
     	System.out.println("300: "+game.score());
 	}
 
 	private void testHeartBreak()  {
-		Bowling game=new Bowling();
+		Bowling game=bowling();
     	for (int i=0; i<11; i++)
       		game.roll(10);
     	game.roll(9);
@@ -38,7 +42,7 @@ public class Tests {
   	}  
 
   	private void testTenthFrameSpare() {
-		Bowling game=new Bowling();
+		Bowling game=bowling();
 	   	for (int i=0; i<9; i++)
       		game.roll(10);
     	game.roll(9);
@@ -48,14 +52,14 @@ public class Tests {
   	}
 
 	public void testTwoThrowsNoMark() {
-		Bowling game=new Bowling();
+		Bowling game=bowling();
 	    game.roll(5);
     	game.roll(4);
     	System.out.println("9: "+game.score());
   	}
 
 	public void testFourThrowsNoMark() {
-		Bowling game=new Bowling();
+		Bowling game=bowling();
     	game.roll(5);
     	game.roll(4);
     	game.roll(7);
@@ -66,7 +70,7 @@ public class Tests {
 	}
 
 	public void testSimpleSpare() {
-		Bowling game=new Bowling();
+		Bowling game=bowling();
     	game.roll(3);
     	game.roll(7);
     	game.roll(3);
@@ -74,7 +78,7 @@ public class Tests {
 	}
 
 	public void testSimpleFrameAfterSpare() {
-		Bowling game=new Bowling();		
+		Bowling game=bowling();		
     	game.roll(3);
     	game.roll(7);
     	game.roll(3);
@@ -85,7 +89,7 @@ public class Tests {
 	}
 
 	public void testSimpleStrike()  {
-		Bowling game=new Bowling();		
+		Bowling game=bowling();		
     	game.roll(10);
     	game.roll(3);
     	game.roll(6);
@@ -94,7 +98,7 @@ public class Tests {
 	}
 
 	public void testEndOfArray()  {
-		Bowling game=new Bowling();		
+		Bowling game=bowling();		
     	for (int i=0; i<9; i++) {
       		game.roll(0);
       		game.roll(0);
@@ -106,7 +110,7 @@ public class Tests {
 	}
 
 	public void testSampleGame()  {
-		Bowling game=new Bowling();		
+		Bowling game=bowling();		
     	game.roll(1);
     	game.roll(4);
     	game.roll(4);
@@ -130,7 +134,7 @@ public class Tests {
 	}
 
     public void testFrameLimit()  {
-        Bowling game=new Bowling();     
+        Bowling game=bowling();     
         for (int i=0; i<20; i++) {
             game.roll(1);
             game.roll(1);
@@ -139,7 +143,7 @@ public class Tests {
     }   
 
     public void testUnfinishedSpare()  {
-        Bowling game=new Bowling();     
+        Bowling game=bowling();     
         game.roll(2);
         game.roll(1);
         game.roll(3);
@@ -148,7 +152,7 @@ public class Tests {
     }  
 
     public void testUnfinishedStrike()  {
-        Bowling game=new Bowling();     
+        Bowling game=bowling();     
         game.roll(10);
         game.roll(5);
         System.out.println("0: "+game.score(1));       
@@ -156,7 +160,7 @@ public class Tests {
     }  
 
     public void testUnfinishedOpen()  {
-        Bowling game=new Bowling();     
+        Bowling game=bowling();     
         game.roll(2);
         game.roll(1);
         game.roll(3);
@@ -164,10 +168,10 @@ public class Tests {
     }  
 
     public void testMoreThanAllowedFrames()  {
-        Bowling game=new Bowling();     
+        Bowling game=bowling();     
         game.roll(2);
         game.roll(5);
         game.roll(3);
         System.out.println("7: "+game.score(200));        
-    }  
+    } 
 }
