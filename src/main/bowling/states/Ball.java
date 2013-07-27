@@ -1,7 +1,7 @@
 package bowling.states; 
 
-import bowling.Frame;
-import bowling.State;
+import bowling.core.Frame;
+import bowling.core.State;
 
 abstract class Ball implements State {
 	public boolean roll(Frame frame, int pins) {
