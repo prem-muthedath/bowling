@@ -1,30 +1,39 @@
 package bowling.states;
 
-import bowling.Bowling;
+enum Transition {
+	FIRST_ROLL, STRIKE, SPARE, OPEN, STRIKE_BONUS_ONE, STRIKE_BONUS_TWO, SPARE_BONUS, SCORED;
 
-public class Transition {
-	private Bowling game;
-
-	public Transition(Bowling game) {
-		this.game=game;
-	}
-
-	public AbstractState next(AbstractState source, Event event) {
-		switch(event) {
+	public Ball next(Ball source) {
+		switch(this) {
 			case SCORED: return source;
-			case FIRST_ROLL: return new SecondRollState(this);
-			case STRIKE: return advance(new StrikeBonusOneState(this));
-			case SPARE: return advance(new SpareBonusState(this));
-			case OPEN: return advance(new ScoredState(this));
-			case STRIKE_BONUS_ONE: return new StrikeBonusTwoState(this);
-			case STRIKE_BONUS_TWO: return new ScoredState(this);
-			case SPARE_BONUS: return new ScoredState(this);
+			case FIRST_ROLL: return secondBall();
+			case STRIKE: return strikeBonusOneBall();
+			case SPARE: return spareBonusBall();
+			case OPEN: return scoredBall();
+			case STRIKE_BONUS_ONE: return strikeBonusTwoBall();
+			case STRIKE_BONUS_TWO: return scoredBall();
+			case SPARE_BONUS: return scoredBall();
 		}
 		return null;
 	}
 
-	private AbstractState advance(AbstractState target) {
-		game.advance();
-		return target;
+	private Ball secondBall() {
+		return new IntermediateBalls().secondBall();
 	}
+
+	private Ball strikeBonusOneBall() {
+		return new IntermediateBalls().strikeBonusOneBall();
+	}
+
+	private Ball strikeBonusTwoBall() {
+		return new IntermediateBalls().strikeBonusTwoBall();
+	}
+
+	private Ball spareBonusBall() {
+		return new IntermediateBalls().spareBonusBall();
+	}
+
+	private Ball scoredBall() {
+		return new ScoredBall();
+	}	
 }
