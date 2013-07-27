@@ -14,10 +14,10 @@ public class Factory {
 
 	private Frame[] frames() {
 		Frame[] frames=new Frame[10];
-			for(int i=0; i < frames.length; i++) {
-				State state=new FirstBall();
-				frames[i]=new Frame(state);
-    		}
+		for(int i=0; i < frames.length; i++) {
+			State state=new FirstBall();
+			frames[i]=new Frame(state);
+    	}
 		return frames;
 	}
 }
