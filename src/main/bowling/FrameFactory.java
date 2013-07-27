@@ -1,12 +1,10 @@
 package bowling;
 
-import bowling.states.FirstRollState;
-import bowling.states.Transition;
+import bowling.states.FirstBall;
 
-class FrameFactory {
-	public static Frame create(Bowling game) {
-		Transition transition=new Transition(game);
-		State state=new FirstRollState(transition);
+public class FrameFactory {
+	public Frame create() {
+		State state=new FirstBall();
 		return new Frame(state);
 	}
 }
