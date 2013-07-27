@@ -8,8 +8,8 @@ public class Frame {
 		this.state=initialState;
 	}
 
-	public void count(int pins) {
-		state.count(this, pins);
+	public boolean roll(int pins) {
+		return state.roll(this, pins);
 	}
 
 	public void transition(int pins) {
