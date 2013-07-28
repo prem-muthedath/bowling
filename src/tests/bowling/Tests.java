@@ -21,7 +21,6 @@ public class Tests {
         tests.testUnfinishedStrike();
         tests.testUnfinishedOpen();
         tests.testMoreThanAllowedFrames();
-        tests.testNoInitialization();
 	}
 
     private Bowling bowling() {
@@ -176,12 +175,4 @@ public class Tests {
         game.roll(3);
         System.out.println("7: "+game.score(200));        
     } 
-
-    public void testNoInitialization() {
-        Bowling game=new Bowling();     
-        game.roll(2);
-        game.roll(5);
-        game.roll(3);
-        System.out.println("0: "+game.score(200));                
-    }    
 }
