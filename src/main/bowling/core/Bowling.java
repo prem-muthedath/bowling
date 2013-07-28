@@ -1,7 +1,7 @@
 package bowling.core;
 
  public class Bowling {
-    private Frame[] frames=new Frame[0];
+    private Frame[] frames;
 
     public Bowling(Frame[] frames) {
         this.frames=java.util.Arrays.copyOfRange(frames, 0, 10);
