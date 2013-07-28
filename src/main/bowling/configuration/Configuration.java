@@ -5,8 +5,8 @@ import bowling.core.Bowling;
 import bowling.core.Frame;
 import bowling.core.State;
 
-public class Factory {
-	public Bowling create() {
+public class Configuration {
+	public Bowling game() {
 		Bowling bowling=new Bowling();
 		bowling.add(frames());
 		return bowling;

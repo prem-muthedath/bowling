@@ -1,7 +1,7 @@
 package bowling;
 
 import bowling.core.Bowling;
-import bowling.configuration.Factory;
+import bowling.configuration.Configuration;
 
 public class Tests {	
 	public static void main(String[] args) {
@@ -25,7 +25,7 @@ public class Tests {
 	}
 
     private Bowling bowling() {
-        return new Factory().create();
+        return new Configuration().game();
     }
 
 	private void testPerfectGame() {
