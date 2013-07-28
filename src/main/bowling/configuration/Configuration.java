@@ -7,9 +7,7 @@ import bowling.core.State;
 
 public class Configuration {
 	public Bowling game() {
-		Bowling bowling=new Bowling();
-		bowling.add(frames());
-		return bowling;
+		return new Bowling(frames());
 	}
 
 	private Frame[] frames() {
