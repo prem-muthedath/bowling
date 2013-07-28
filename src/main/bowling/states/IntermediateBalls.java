@@ -10,7 +10,7 @@ class IntermediateBalls {
         };
     }
 
-    public Ball strikeBonusOneBall() {
+    public Ball firstStrikeBonusBall() {
         return new Ball() {
             protected Transition transition(boolean allPins) {
                 return Transition.STRIKE_BONUS_ONE;     
@@ -18,7 +18,7 @@ class IntermediateBalls {
         };
     }
 
-    public Ball strikeBonusTwoBall() {
+    public Ball secondStrikeBonusBall() {
         return new Ball() {
             protected Transition transition(boolean allPins) {
                 return Transition.STRIKE_BONUS_TWO;     

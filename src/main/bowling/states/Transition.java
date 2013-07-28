@@ -7,10 +7,10 @@ enum Transition {
 		switch(this) {
 			case SCORED: return source;
 			case FIRST_ROLL: return secondBall();
-			case STRIKE: return strikeBonusOneBall();
+			case STRIKE: return firstStrikeBonusBall();
 			case SPARE: return spareBonusBall();
 			case OPEN: return scoredBall();
-			case STRIKE_BONUS_ONE: return strikeBonusTwoBall();
+			case STRIKE_BONUS_ONE: return secondStrikeBonusBall();
 			case STRIKE_BONUS_TWO: return scoredBall();
 			case SPARE_BONUS: return scoredBall();
 		}
@@ -21,12 +21,12 @@ enum Transition {
 		return new IntermediateBalls().secondBall();
 	}
 
-	private Ball strikeBonusOneBall() {
-		return new IntermediateBalls().strikeBonusOneBall();
+	private Ball firstStrikeBonusBall() {
+		return new IntermediateBalls().firstStrikeBonusBall();
 	}
 
-	private Ball strikeBonusTwoBall() {
-		return new IntermediateBalls().strikeBonusTwoBall();
+	private Ball secondStrikeBonusBall() {
+		return new IntermediateBalls().secondStrikeBonusBall();
 	}
 
 	private Ball spareBonusBall() {
