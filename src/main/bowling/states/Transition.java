@@ -18,19 +18,19 @@ enum Transition {
 	}
 
 	private Ball secondBall() {
-		return new IntermediateBalls().secondBall();
+		return new TransitionalBalls().secondBall();
 	}
 
 	private Ball firstStrikeBonusBall() {
-		return new IntermediateBalls().firstStrikeBonusBall();
+		return new TransitionalBalls().firstStrikeBonusBall();
 	}
 
 	private Ball secondStrikeBonusBall() {
-		return new IntermediateBalls().secondStrikeBonusBall();
+		return new TransitionalBalls().secondStrikeBonusBall();
 	}
 
 	private Ball spareBonusBall() {
-		return new IntermediateBalls().spareBonusBall();
+		return new TransitionalBalls().spareBonusBall();
 	}
 
 	private Ball scoredBall() {

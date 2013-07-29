@@ -1,16 +1,25 @@
 package bowling.states;
 
-class IntermediateBalls {
-    public Ball secondBall() {
-        return new FirstBall() {
+public class TransitionalBalls {
+    public Ball firstBall() {
+        return new RolledBall(new Ball() {
+            protected Transition transition(boolean allPins) {
+                if(allPins) return Transition.STRIKE;
+                return Transition.FIRST_ROLL;     
+            }
+        });
+    }
+
+    Ball secondBall() {
+        return new RolledBall(new Ball() {
             protected Transition transition(boolean allPins) {
                 if(allPins) return Transition.SPARE;
                 return Transition.OPEN;     
             }
-        };
+        });
     }
 
-    public Ball firstStrikeBonusBall() {
+    Ball firstStrikeBonusBall() {
         return new Ball() {
             protected Transition transition(boolean allPins) {
                 return Transition.STRIKE_BONUS_ONE;     
@@ -18,7 +27,7 @@ class IntermediateBalls {
         };
     }
 
-    public Ball secondStrikeBonusBall() {
+    Ball secondStrikeBonusBall() {
         return new Ball() {
             protected Transition transition(boolean allPins) {
                 return Transition.STRIKE_BONUS_TWO;     
@@ -26,7 +35,7 @@ class IntermediateBalls {
         };
     } 
 
-    public Ball spareBonusBall() {
+    Ball spareBonusBall() {
         return new Ball() {
             protected Transition transition(boolean allPins) {
                 return Transition.SPARE_BONUS;      
