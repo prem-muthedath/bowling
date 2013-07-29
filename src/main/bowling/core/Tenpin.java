@@ -8,6 +8,10 @@ public enum Tenpin {
         this.value=value;
     }
 
+    public int value() {
+    	return value;
+    }
+    
     public boolean equals(int someValue) {
         return value==someValue;
     }

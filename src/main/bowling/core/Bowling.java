@@ -4,7 +4,7 @@ package bowling.core;
     private Frame[] frames;
 
     public Bowling(Frame[] frames) {
-        this.frames=java.util.Arrays.copyOfRange(frames, 0, 10);
+        this.frames=java.util.Arrays.copyOfRange(frames, 0, Tenpin.TOTAL_FRAMES.value());
     }
 
     public void roll(int pins)  {
