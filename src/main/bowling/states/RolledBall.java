@@ -1,7 +1,5 @@
 package bowling.states;
 
-import bowling.core.Count;
-
 class RolledBall extends Ball {
 	private Ball ball;
 
@@ -13,15 +11,7 @@ class RolledBall extends Ball {
 		return true;
 	}
 
-	protected Count count(Count count) {
-		return ball.count(count);
-	}
-
 	protected Transition transition(boolean allPins) {
 		return ball.transition(allPins);
-	}
-
-	public boolean score() {
-		return ball.score();
 	}
 }
