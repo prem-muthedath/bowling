@@ -14,7 +14,7 @@ public class Pinfall {
 	}
 
 	private String message(int sum) {
-		return "INVALID ROLL: PINFALL "+sum+" CAN NOT EXCEED "+Bowling.PINS+" WHILE ROLLING";
+		return "INVALID ROLL: PINFALL "+sum+" CAN NOT EXCEED "+Bowling.PINS+" WHILE ROLLING.";
 	}
 
 	public State transition(State state) {
