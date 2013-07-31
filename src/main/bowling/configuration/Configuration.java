@@ -11,7 +11,7 @@ public class Configuration {
 	}
 
 	private Frame[] frames() {
-		Frame[] frames=new Frame[10];
+		Frame[] frames=new Frame[Bowling.FRAMES];
 		for(int i=0; i < frames.length; i++) {
 			State state=new TransitionalBalls().firstBall();
 			frames[i]=new Frame(state);
