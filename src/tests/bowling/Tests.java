@@ -21,6 +21,9 @@ public class Tests {
         tests.testUnfinishedStrike();
         tests.testUnfinishedOpen();
         tests.testMoreThanAllowedFrames();
+        tests.testNegativePins();
+        tests.testMoreThanTenPins();   
+        tests.testInvalidRoll();     
 	}
 
     private Bowling bowling() {
@@ -175,4 +178,45 @@ public class Tests {
         game.roll(3);
         System.out.println("7: "+game.score(200));        
     } 
+
+    public void testNegativePins()  {
+        Bowling game=bowling(); 
+        try {     
+            game.roll(-2);
+            game.roll(5);
+            game.roll(3);
+            System.out.println("7: "+game.score(200));  
+        } catch(Exception e) {
+            System.out.println("NEGATIVE PINS TEST: "+e.toString()+" 0: "+game.score());
+        }      
+    } 
+
+    public void testMoreThanTenPins()  {
+        Bowling game=bowling(); 
+        try {     
+            game.roll(2);
+            game.roll(5);
+            game.roll(3);
+            game.roll(6);
+            game.roll(11);
+            System.out.println("7: "+game.score(200));  
+        } catch(Exception e) {
+            System.out.println("TOO MANY PINS TEST: "+e.toString()+" 16: "+game.score());
+        }      
+    }  
+
+    public void testInvalidRoll()  {
+        Bowling game=bowling(); 
+        try {     
+            game.roll(2);
+            game.roll(5);
+            game.roll(3);
+            game.roll(7);
+            game.roll(1);
+            game.roll(10);            
+            System.out.println("7: "+game.score(200));  
+        } catch(Exception e) {
+            System.out.println("INVALID ROLL TEST: "+e.toString()+" 18: "+game.score());
+        }      
+    }            
 }
