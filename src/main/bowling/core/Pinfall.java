@@ -4,29 +4,30 @@ public class Pinfall {
 	private int pins;
 
 	public Pinfall(int pins) {
+		this(pins, Bowling.PINS);
+	}
+
+	private Pinfall(int pins, int maxPins) {
+		set(pins, maxPins);
+	}
+
+	private void set(int pins, int maxPins) {
+		if(pins < 0 || pins > maxPins) 
+			throw new RuntimeException("PINFALL SHOULD BE BETWEEN 0 AND "+maxPins+". FOUND: "+pins+".");
 		this.pins=pins;
 	}
 
 	public Pinfall add(Pinfall pinfall) {
-		int sum=pins+pinfall.pins;		
-		if(pins < Bowling.PINS && sum > Bowling.PINS) throw new RuntimeException(message(sum));
-		return new Pinfall(sum);
+		int sum=this.pins+pinfall.pins;
+		int maxPins=Bowling.PINS*(1+(pins/Bowling.PINS));
+		return new Pinfall(sum, maxPins);
 	}
 
-	private String message(int sum) {
-		return "INVALID ROLL: PINFALL "+sum+" CAN NOT EXCEED "+Bowling.PINS+" WHILE ROLLING.";
-	}
-
-	public State transition(State state) {
-		return state.next(allPins());
-	}
-
-	private boolean allPins() {
+	public boolean allPins() {
 		return pins==Bowling.PINS;
 	}
 
-	public int score(State state) {
-		if(state.score()) return pins;
-		return 0;
+	public int score() {
+		return pins;
 	}	
 }
