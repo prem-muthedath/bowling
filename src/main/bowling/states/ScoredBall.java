@@ -1,17 +1,17 @@
 package bowling.states;
 
-import bowling.core.Count;
+import bowling.core.Pinfall;
 
 class ScoredBall extends Ball {
-	protected Count count(Count count) {
-		return new Count(0);
+	protected Pinfall count(Pinfall count) {
+		return new Pinfall(0);
 	}
 
-	protected Transition transition(boolean allPins) {
+	protected Transition transition(Pinfall pinfall) {
 		return Transition.SCORED;		
 	}
 
-	public boolean score() {
-		return true;
+	public int score(Pinfall pinfall) {
+		return pinfall.score();
 	}
 }

@@ -1,10 +1,12 @@
 package bowling.states;
 
+import bowling.core.Pinfall;
+
 public class TransitionalBalls {
     public Ball firstBall() {
         return new RolledBall(new Ball() {
-            protected Transition transition(boolean allPins) {
-                if(allPins) return Transition.STRIKE;
+            protected Transition transition(Pinfall pinfall) {
+                if(pinfall.allPins()) return Transition.STRIKE;
                 return Transition.FIRST_ROLL;     
             }
         });
@@ -12,8 +14,8 @@ public class TransitionalBalls {
 
     Ball secondBall() {
         return new RolledBall(new Ball() {
-            protected Transition transition(boolean allPins) {
-                if(allPins) return Transition.SPARE;
+            protected Transition transition(Pinfall pinfall) {
+                if(pinfall.allPins()) return Transition.SPARE;
                 return Transition.OPEN;     
             }
         });
@@ -21,7 +23,7 @@ public class TransitionalBalls {
 
     Ball firstStrikeBonusBall() {
         return new Ball() {
-            protected Transition transition(boolean allPins) {
+            protected Transition transition(Pinfall pinfall) {
                 return Transition.STRIKE_BONUS_ONE;     
             }
         };
@@ -29,7 +31,7 @@ public class TransitionalBalls {
 
     Ball secondStrikeBonusBall() {
         return new Ball() {
-            protected Transition transition(boolean allPins) {
+            protected Transition transition(Pinfall pinfall) {
                 return Transition.STRIKE_BONUS_TWO;     
             }
         };
@@ -37,7 +39,7 @@ public class TransitionalBalls {
 
     Ball spareBonusBall() {
         return new Ball() {
-            protected Transition transition(boolean allPins) {
+            protected Transition transition(Pinfall pinfall) {
                 return Transition.SPARE_BONUS;      
             }
         };

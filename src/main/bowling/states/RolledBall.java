@@ -1,5 +1,7 @@
 package bowling.states;
 
+import bowling.core.Pinfall;
+
 class RolledBall extends Ball {
 	private Ball ball;
 
@@ -11,7 +13,7 @@ class RolledBall extends Ball {
 		return true;
 	}
 
-	protected Transition transition(boolean allPins) {
-		return ball.transition(allPins);
+	protected Transition transition(Pinfall pinfall) {
+		return ball.transition(pinfall);
 	}
 }
