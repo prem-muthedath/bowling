@@ -208,15 +208,15 @@ public class Tests {
     public void testInvalidRoll()  {
         Bowling game=bowling(); 
         try {     
-            game.roll(2);
+            game.roll(10);
             game.roll(5);
-            game.roll(3);
+            game.roll(6);
             game.roll(7);
             game.roll(1);
             game.roll(10);            
             System.out.println("7: "+game.score(200));  
         } catch(Exception e) {
-            System.out.println("INVALID ROLL TEST: "+e.toString()+" 18: "+game.score());
+            System.out.println("INVALID ROLL TEST: "+e.toString()+" 0: "+game.score());
         }      
     }            
 }
