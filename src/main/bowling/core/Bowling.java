@@ -1,9 +1,10 @@
 package bowling.core;
 
  public class Bowling {
-    private Frame[] frames;
     public static final int FRAMES=10;
     public static final int PINS=10;
+
+    private Frame[] frames;
 
     public Bowling(Frame[] frames) {
         this.frames=java.util.Arrays.copyOfRange(frames, 0, Bowling.FRAMES);
@@ -11,7 +12,7 @@ package bowling.core;
 
     public void roll(int pins)  {
         for(Frame each : frames)
-            if(each.roll(new Count(pins))) return;
+            if(each.roll(new Pinfall(pins))) return;
     }
 
     public int score() {
