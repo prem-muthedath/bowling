@@ -1,16 +1,16 @@
 package bowling.states; 
 
-import bowling.core.Frame;
-import bowling.core.Count;
 import bowling.core.State;
+import bowling.core.Frame;
+import bowling.core.Pinfall;
 
 abstract class Ball implements State {
-	public boolean roll(Frame frame, Count count) {
+	public boolean roll(Frame frame, Pinfall count) {
 		frame.transition(count(count));
 		return rolled();
 	}
 
-	protected Count count(Count count) {
+	protected Pinfall count(Pinfall count) {
 		return count;
 	}	
 
@@ -18,13 +18,13 @@ abstract class Ball implements State {
 		return false;
 	}
 	
-	public State next(boolean allPins) {
-		return transition(allPins).next(this);
+	public State next(Pinfall pinfall) {
+		return transition(pinfall).next(this);
 	}
 
-	protected abstract Transition transition(boolean allPins);
+	protected abstract Transition transition(Pinfall pinfall);
 
-	public boolean score() {
-		return false;
+	public int score(Pinfall pinfall) {
+		return 0;
 	}
 }
