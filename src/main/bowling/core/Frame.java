@@ -8,16 +8,16 @@ public class Frame {
 		state=initialState;
 	}
 
-	public boolean roll(Count count) {
+	public boolean roll(Pinfall count) {
 		return state.roll(this, count);
 	}
 
-	public void transition(Count count) {
-		pinfall=count.addTo(pinfall);
-		state=pinfall.transition(state);		
+	public void transition(Pinfall count) {
+		pinfall=pinfall.add(count);
+		state=state.next(pinfall);		
 	}
 
 	public int score() {
-		return pinfall.score(state);
+		return state.score(pinfall);
 	}		
 }
