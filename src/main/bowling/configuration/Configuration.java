@@ -1,9 +1,9 @@
 package bowling.configuration;
 
-import bowling.states.TransitionalBalls;
 import bowling.core.Bowling;
 import bowling.core.Frame;
 import bowling.core.State;
+import bowling.states.TransitionalBalls;
 
 public class Configuration {
 	public Bowling game() {
