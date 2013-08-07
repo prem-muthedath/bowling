@@ -1,17 +1,19 @@
 package bowling.states;
 
-import bowling.core.Pinfall;
+import bowling.core.PinCount;
+import bowling.core.Ball;
+import bowling.core.Score;
 
 class ScoredBall extends Ball {
-	protected Pinfall count(Pinfall count) {
-		return new Pinfall(0);
+	protected PinCount adjust(PinCount pinCount) {
+		return new PinCount(0);
 	}
 
-	protected Transition transition(Pinfall pinfall) {
-		return Transition.SCORED;		
+	protected Ball nonMarkSuccessor() {
+		return this;
 	}
 
-	public int score(Pinfall pinfall) {
-		return pinfall.score();
+	public void score(Score score, PinCount pinCount) {
+		pinCount.score(score);
 	}
 }
