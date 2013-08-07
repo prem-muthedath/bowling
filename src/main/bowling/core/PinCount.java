@@ -24,8 +24,7 @@ public class PinCount {
 	}
 
 	public Ball next(Ball ball) {
-		if(pins==Bowling.PINS) return ball.markSuccessor();
-		return ball.nonMarkSuccessor();
+		return (pins==Bowling.PINS)  ?  ball.markSuccessor() : ball.nonMarkSuccessor();
 	}
 
 	public void score(Score score) {
