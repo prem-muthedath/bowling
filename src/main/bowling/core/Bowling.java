@@ -12,17 +12,17 @@ package bowling.core;
 
     public void roll(int pins)  {
         for(Frame each : frames)
-            if(each.roll(new Pinfall(pins))) return;
+            if(each.roll(new PinCount(pins))) return;
     }
 
-    public int score() {
+    public Score score() {
         return score(frames.length);
     }
 
-    public int score(int aFrame) {
-        int score=0;
+    public Score score(int aFrame) {
+        Score score=new Score();
         for(int frame=0; frame < Math.min(aFrame, frames.length); frame++)
-            score+=frames[frame].score();
+            frames[frame].score(score);
         return score;
     }
 }
