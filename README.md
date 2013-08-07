@@ -9,7 +9,7 @@ one object was both aggregating frame scores as well as scoring each frame.
 I tried many designs, but I found the design using the state pattern as the only satisfactory one.
 
 With this design, Bowling just aggregates frame scores, and the logic for scoring a frame is distributed
-between Frame and its State objects.
+between Frame and its states (Ball objects here).
 
 This design is also based on what I learned about OO from:
 
