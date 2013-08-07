@@ -1,6 +1,7 @@
 package bowling.states;
 
-import bowling.core.Pinfall;
+import bowling.core.PinCount;
+import bowling.core.Ball;
 
 class RolledBall extends Ball {
 	private Ball ball;
@@ -9,11 +10,15 @@ class RolledBall extends Ball {
 		this.ball=ball;
 	}
 
-	public boolean rolled() {
+	protected boolean rolled() {
 		return true;
 	}
+	
+	public Ball next(PinCount pinCount) {
+		return ball.next(pinCount);
+	}	
 
-	protected Transition transition(Pinfall pinfall) {
-		return ball.transition(pinfall);
+	protected Ball nonMarkSuccessor() {
+		throw new RuntimeException("Undefined method for Rolled Ball");
 	}
 }
