@@ -1,23 +1,23 @@
 package bowling.core;
 
 public class Frame {	
-	private Pinfall pinfall=new Pinfall(0);
-	private State state;
+	private PinCount pinCount=new PinCount(0);
+	private Ball ball;
 
-	public Frame(State initialState) {
-		state=initialState;
+	public Frame(Ball first) {
+		ball=first;
 	}
 
-	public boolean roll(Pinfall count) {
-		return state.roll(this, count);
+	public boolean roll(PinCount count) {
+		return ball.roll(this, count);
 	}
 
-	public void transition(Pinfall count) {
-		pinfall=pinfall.add(count);
-		state=state.next(pinfall);		
+	public void transition(PinCount count) {
+		pinCount=pinCount.add(count);
+		ball=ball.next(pinCount);		
 	}
 
-	public int score() {
-		return state.score(pinfall);
+	public void score(Score score) {
+		ball.score(score, pinCount);
 	}		
 }
