@@ -12,7 +12,7 @@ public class Frame {
 		return ball.roll(this, count);
 	}
 
-	public void transition(PinCount count) {
+	void transition(PinCount count) {
 		pinCount=pinCount.add(count);
 		ball=ball.next(pinCount);		
 	}
