@@ -1,19 +1,18 @@
 package bowling.states;
 
-import bowling.core.PinCount;
 import bowling.core.Ball;
 import bowling.core.Score;
 
 class ScoredBall extends Ball {
-	protected PinCount adjust(PinCount pinCount) {
-		return new PinCount(0);
+	protected int adjust(int pinCount) {
+		return 0;
 	}
 
-	protected Ball nonMarkSuccessor() {
+	public Ball nonMarkSuccessor() {
 		return this;
 	}
 
-	public void score(Score score, PinCount pinCount) {
-		pinCount.score(score);
+	public void score(Score score, int pinCount) {
+		score.add(pinCount);
 	}
 }

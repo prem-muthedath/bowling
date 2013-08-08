@@ -5,11 +5,11 @@ import bowling.core.Ball;
 public class BallFactory {
     public Ball firstBall() {
         return new RolledBall(new Ball() {
-            protected Ball markSuccessor() {
+            public Ball markSuccessor() {
                 return new BallFactory().firstStrikeBonusBall();
             }
 
-            protected Ball nonMarkSuccessor() {
+            public Ball nonMarkSuccessor() {
                 return new BallFactory().secondBall();     
             }
         });
@@ -17,11 +17,11 @@ public class BallFactory {
 
     Ball secondBall() {
         return new RolledBall(new Ball() {
-            protected Ball markSuccessor() {
+            public Ball markSuccessor() {
                 return new BallFactory().spareBonusBall();
             }
 
-            protected Ball nonMarkSuccessor() {
+            public Ball nonMarkSuccessor() {
                 return new BallFactory().scoredBall();     
             }
         });
@@ -29,7 +29,7 @@ public class BallFactory {
 
     Ball firstStrikeBonusBall() {
         return new Ball() {
-            protected Ball nonMarkSuccessor() {
+            public Ball nonMarkSuccessor() {
                 return new BallFactory().secondStrikeBonusBall();     
             }
         };
@@ -37,7 +37,7 @@ public class BallFactory {
 
     Ball secondStrikeBonusBall() {
         return new Ball() {
-            protected Ball nonMarkSuccessor() {
+            public Ball nonMarkSuccessor() {
                 return new BallFactory().scoredBall();     
             }
         };
@@ -45,7 +45,7 @@ public class BallFactory {
 
     Ball spareBonusBall() {
         return new Ball() {
-            protected Ball nonMarkSuccessor() {
+            public Ball nonMarkSuccessor() {
                 return new BallFactory().scoredBall();      
             }
         };

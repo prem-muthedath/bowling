@@ -12,7 +12,7 @@ package bowling.core;
 
     public void roll(int pins)  {
         for(Frame each : frames)
-            if(each.roll(new PinCount(pins))) return;
+            if(each.roll(pins)) return;
     }
 
     public Score score() {
