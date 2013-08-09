@@ -1,6 +1,10 @@
 package bowling;
 
 import bowling.core.Bowling;
+import bowling.core.FrameId;
+import bowling.core.PinCount;
+import bowling.core.PinCountFactory;
+
 import bowling.configuration.Configuration;
 
 public class Tests {	
@@ -22,191 +26,222 @@ public class Tests {
         tests.testUnfinishedOpen();
         tests.testMoreThanAllowedFrames();
         tests.testZeroStrikeBonus();   
-        tests.testZeroSpareBonus();        
+        tests.testZeroSpareBonus();  
+        tests.testValidFrame();   
+        tests.testInvalidFrame();   
         tests.testNegativePins();
         tests.testMoreThanTenPins();   
         tests.testInvalidRoll();  
+        tests.testPinCountEquals();
 	}
 
     private Bowling bowling() {
         return new Configuration().game();
     }
 
+    private PinCount pinCount(int pins) {
+        return new PinCountFactory().create(pins);
+    }
+
+    private FrameId frame(int id) {
+        return new FrameId(id);
+    }
+
 	private void testPerfectGame() {
 		Bowling game=bowling();
 		for (int i=0; i<12; i++)
-      		game.roll(10);
+            game.roll(pinCount(10));
     	System.out.println("300: "+game.score());
 	}
 
 	private void testHeartBreak()  {
 		Bowling game=bowling();
     	for (int i=0; i<11; i++)
-      		game.roll(10);
-    	game.roll(9);
+            game.roll(pinCount(10));
+            game.roll(pinCount(9));
     	System.out.println("299: "+game.score());
   	}  
 
   	private void testTenthFrameSpare() {
 		Bowling game=bowling();
 	   	for (int i=0; i<9; i++)
-      		game.roll(10);
-    	game.roll(9);
-    	game.roll(1);
-    	game.roll(1);
+            game.roll(pinCount(10));
+            game.roll(pinCount(9));
+            game.roll(pinCount(1));
+            game.roll(pinCount(1));
     	System.out.println("270: "+game.score());
   	}
 
 	public void testTwoThrowsNoMark() {
 		Bowling game=bowling();
-	    game.roll(5);
-    	game.roll(4);
+        game.roll(pinCount(5));
+    	game.roll(pinCount(4));
     	System.out.println("9: "+game.score());
   	}
 
 	public void testFourThrowsNoMark() {
 		Bowling game=bowling();
-    	game.roll(5);
-    	game.roll(4);
-    	game.roll(7);
-    	game.roll(2);
+    	game.roll(pinCount(5));
+    	game.roll(pinCount(4));
+    	game.roll(pinCount(7));
+    	game.roll(pinCount(2));
         System.out.println("18: "+game.score());
-    	System.out.println("9: "+game.score(1));
-    	System.out.println("18: "+game.score(2));
+    	System.out.println("9: "+game.score(frame(1)));
+    	System.out.println("18: "+game.score(frame(2)));
 	}
 
 	public void testSimpleSpare() {
 		Bowling game=bowling();
-    	game.roll(3);
-    	game.roll(7);
-    	game.roll(3);
-    	System.out.println("13: "+game.score(1));
+    	game.roll(pinCount(3));
+    	game.roll(pinCount(7));
+    	game.roll(pinCount(3));
+    	System.out.println("13: "+game.score(frame(1)));
 	}
 
 	public void testSimpleFrameAfterSpare() {
 		Bowling game=bowling();		
-    	game.roll(3);
-    	game.roll(7);
-    	game.roll(3);
-    	game.roll(2);
-        System.out.println("13: "+game.score(1));
-    	System.out.println("18: "+game.score(2));
+    	game.roll(pinCount(3));
+    	game.roll(pinCount(7));
+    	game.roll(pinCount(3));
+    	game.roll(pinCount(2));
+        System.out.println("13: "+game.score(frame(1)));
+    	System.out.println("18: "+game.score(frame(2)));
     	System.out.println("18: "+game.score());	
 	}
 
 	public void testSimpleStrike()  {
 		Bowling game=bowling();		
-    	game.roll(10);
-    	game.roll(3);
-    	game.roll(6);
-    	System.out.println("19: "+game.score(1));	
+    	game.roll(pinCount(10));
+    	game.roll(pinCount(3));
+    	game.roll(pinCount(6));
+    	System.out.println("19: "+game.score(frame(1)));	
     	System.out.println("28: "+game.score());	
 	}
 
 	public void testEndOfArray()  {
 		Bowling game=bowling();		
     	for (int i=0; i<9; i++) {
-      		game.roll(0);
-      		game.roll(0);
+            game.roll(pinCount(0));
+            game.roll(pinCount(0));
     	}
-    	game.roll(2);
-    	game.roll(8); // 10th frame spare
-    	game.roll(10); // Strike in last position of array.
+    	game.roll(pinCount(2));
+    	game.roll(pinCount(8)); // 10th frame spare
+    	game.roll(pinCount(10)); // Strike in last position of array.
     	System.out.println("20: "+game.score());
 	}
 
 	public void testSampleGame()  {
 		Bowling game=bowling();		
-    	game.roll(1);
-    	game.roll(4);
-    	game.roll(4);
-    	game.roll(5);
-    	game.roll(6);
-    	game.roll(4);
-    	game.roll(5);
-    	game.roll(5);
-    	game.roll(10);
-    	game.roll(0);
-    	game.roll(1);
-    	game.roll(7);
-    	game.roll(3);
-    	game.roll(6);
-    	game.roll(4);
-    	game.roll(10);
-    	game.roll(2);
-    	game.roll(8);
-    	game.roll(6);
+    	game.roll(pinCount(1));
+    	game.roll(pinCount(4));
+    	game.roll(pinCount(4));
+    	game.roll(pinCount(5));
+    	game.roll(pinCount(6));
+    	game.roll(pinCount(4));
+    	game.roll(pinCount(5));
+    	game.roll(pinCount(5));
+    	game.roll(pinCount(10));
+    	game.roll(pinCount(0));
+    	game.roll(pinCount(1));
+    	game.roll(pinCount(7));
+    	game.roll(pinCount(3));
+    	game.roll(pinCount(6));
+    	game.roll(pinCount(4));
+    	game.roll(pinCount(10));
+    	game.roll(pinCount(2));
+    	game.roll(pinCount(8));
+    	game.roll(pinCount(6));
     	System.out.println("133: "+game.score());
 	}
 
     public void testFrameLimit()  {
         Bowling game=bowling();     
         for (int i=0; i<20; i++) {
-            game.roll(1);
-            game.roll(1);
+            game.roll(pinCount(1));
+            game.roll(pinCount(1));
         }
         System.out.println("20: "+game.score());
     }   
 
     public void testUnfinishedSpare()  {
         Bowling game=bowling();     
-        game.roll(2);
-        game.roll(1);
-        game.roll(3);
-        game.roll(7);        
+        game.roll(pinCount(2));
+        game.roll(pinCount(1));
+        game.roll(pinCount(3));
+        game.roll(pinCount(7));        
         System.out.println("3: "+game.score());
     }  
 
     public void testUnfinishedStrike()  {
         Bowling game=bowling();     
-        game.roll(10);
-        game.roll(5);
-        System.out.println("0: "+game.score(1));       
+        game.roll(pinCount(10));
+        game.roll(pinCount(5));
+        System.out.println("0: "+game.score(frame(1)));       
         System.out.println("0: "+game.score());
     }  
 
     public void testUnfinishedOpen()  {
         Bowling game=bowling();     
-        game.roll(2);
-        game.roll(1);
-        game.roll(3);
+        game.roll(pinCount(2));
+        game.roll(pinCount(1));
+        game.roll(pinCount(3));
         System.out.println("3: "+game.score());        
     }  
 
     public void testMoreThanAllowedFrames()  {
         Bowling game=bowling();     
-        game.roll(2);
-        game.roll(5);
-        game.roll(3);
-        System.out.println("7: "+game.score(200));        
+        game.roll(pinCount(2));
+        game.roll(pinCount(5));
+        game.roll(pinCount(3));
+        System.out.println("7: "+game.score(frame(200)));        
     } 
 
     public void testZeroStrikeBonus()  {
         Bowling game=bowling();     
-        game.roll(10);
-        game.roll(0);
-        game.roll(0);
-        game.roll(5);        
+        game.roll(pinCount(10));
+        game.roll(pinCount(0));
+        game.roll(pinCount(0));
+        game.roll(pinCount(5));        
         System.out.println("10: "+game.score());        
     }  
 
     public void testZeroSpareBonus()  {
         Bowling game=bowling();     
-        game.roll(2);
-        game.roll(8);
-        game.roll(0);
-        game.roll(10);   
-        game.roll(10);                     
+        game.roll(pinCount(2));
+        game.roll(pinCount(8));
+        game.roll(pinCount(0));
+        game.roll(pinCount(10));   
+        game.roll(pinCount(10));                     
         System.out.println("30: "+game.score());        
     }                                
+
+    public void testValidFrame()  {
+        Bowling game=bowling();     
+        game.roll(pinCount(2));
+        game.roll(pinCount(1));
+        game.roll(pinCount(3));
+        game.roll(pinCount(6));        
+        System.out.println("12: "+game.score());
+        System.out.println("3: "+game.score(frame(1)));
+    }  
+
+    public void testInvalidFrame()  {
+        Bowling game=bowling();     
+        game.roll(pinCount(4));
+        game.roll(pinCount(1));
+        game.roll(pinCount(3));
+        game.roll(pinCount(6));        
+        System.out.println("14: "+game.score());
+        System.out.println("0: "+game.score(frame(-3)));
+    }  
 
     public void testNegativePins()  {
         Bowling game=bowling(); 
         try {     
-            game.roll(-2);
-            game.roll(5);
-            game.roll(3);
-            System.out.println("7: "+game.score(200));  
+            game.roll(pinCount(-2));
+            game.roll(pinCount(5));
+            game.roll(pinCount(3));
+            System.out.println("7: "+game.score(frame(200)));  
         } catch(Exception e) {
             System.out.println("NEGATIVE PINS TEST: "+e.toString()+" 0: "+game.score());
         }      
@@ -215,12 +250,12 @@ public class Tests {
     public void testMoreThanTenPins()  {
         Bowling game=bowling(); 
         try {     
-            game.roll(2);
-            game.roll(5);
-            game.roll(3);
-            game.roll(6);
-            game.roll(11);
-            System.out.println("7: "+game.score(200));  
+            game.roll(pinCount(2));
+            game.roll(pinCount(5));
+            game.roll(pinCount(3));
+            game.roll(pinCount(6));
+            game.roll(pinCount(11));
+            System.out.println("7: "+game.score(frame(200)));  
         } catch(Exception e) {
             System.out.println("TOO MANY PINS TEST: "+e.toString()+" 16: "+game.score());
         }      
@@ -229,15 +264,29 @@ public class Tests {
     public void testInvalidRoll()  {
         Bowling game=bowling(); 
         try {     
-            game.roll(10);
-            game.roll(5);
-            game.roll(6);
-            game.roll(7);
-            game.roll(1);
-            game.roll(10);            
-            System.out.println("7: "+game.score(200));  
+            game.roll(pinCount(10));
+            game.roll(pinCount(5));
+            game.roll(pinCount(6));
+            game.roll(pinCount(7));
+            game.roll(pinCount(1));
+            game.roll(pinCount(10));            
+            System.out.println("7: "+game.score(frame(200)));  
         } catch(Exception e) {
             System.out.println("INVALID ROLL TEST: "+e.toString()+" 0: "+game.score());
         }      
     }  
+
+    public void testPinCountEquals()  {
+        PinCount count1=pinCount(4); 
+        PinCount count2=pinCount(10); 
+        PinCount count3=pinCount(4); 
+        PinCount count4=null; 
+        Bowling game=bowling(); 
+
+        System.out.println("FALSE: "+count1.equals(count2));  
+        System.out.println("TRUE: "+count1.equals(count3));  
+        System.out.println("FALSE: "+count1.equals(count4));  
+        System.out.println("FALSE: "+count1.equals(game)); 
+        System.out.println("TRUE: "+count1.equals(count1));  
+    }      
 }
