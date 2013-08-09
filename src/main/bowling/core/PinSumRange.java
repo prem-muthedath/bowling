@@ -1,10 +1,10 @@
 package bowling.core;
 
 public class PinSumRange {
-	private int basePins;
+	private int minSum;
 
-	public PinSumRange(int basePins) {
-		this.basePins=basePins;
+	public PinSumRange(int minSum) {
+		this.minSum=minSum;
 	}
 
 	public int filter(int sum) {
@@ -14,11 +14,11 @@ public class PinSumRange {
 	}
 
 	private int minSum() {
-		return basePins;
+		return minSum;
 	}
 
 	private int maxSum() {
-		return Bowling.PINS*(1+(basePins/Bowling.PINS));
+		return Bowling.PINS*(1+(minSum/Bowling.PINS));
 	}
 
 	private String message(int sum) {
