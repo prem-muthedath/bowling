@@ -1,27 +1,27 @@
 package bowling.core;
 
 public class PinSumRange {
-	private int minSum;
+	private int minimum;
 
-	public PinSumRange(int minSum) {
-		this.minSum=minSum;
+	public PinSumRange(int minimum) {
+		this.minimum=minimum;
 	}
 
 	public int filter(int sum) {
-		if(sum < minSum() || sum > maxSum()) 
+		if(sum < minimum() || sum > maximum()) 
 			throw new RuntimeException(message(sum));
 		return sum;		
 	}
 
-	private int minSum() {
-		return minSum;
+	private int minimum() {
+		return minimum;
 	}
 
-	private int maxSum() {
-		return Bowling.PINS*(1+(minSum/Bowling.PINS));
+	private int maximum() {
+		return Bowling.PINS*(1+(minimum/Bowling.PINS));
 	}
 
 	private String message(int sum) {
-		return "EXPECTED PIN SUM: "+minSum()+" - "+maxSum()+". BUT FOUND: "+sum+".";
+		return "EXPECTED PIN SUM: "+minimum()+" - "+maximum()+". BUT FOUND: "+sum+".";
 	}	
 }
