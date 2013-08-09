@@ -9,17 +9,17 @@ import bowling.configuration.Configuration;
 
 public class Tests {	
 	public static void main(String[] args) {
-		Tests tests=new Tests();
-		tests.testPerfectGame();
-		tests.testHeartBreak();
-		tests.testTenthFrameSpare();
-		tests.testTwoThrowsNoMark();
-		tests.testFourThrowsNoMark();
-		tests.testSimpleSpare();
-		tests.testSimpleFrameAfterSpare();
-		tests.testSimpleStrike();
-		tests.testEndOfArray();
-		tests.testSampleGame();
+        Tests tests=new Tests();
+        tests.testPerfectGame();
+        tests.testHeartBreak();
+        tests.testTenthFrameSpare();
+        tests.testTwoThrowsNoMark();
+        tests.testFourThrowsNoMark();
+        tests.testSimpleSpare();
+        tests.testSimpleFrameAfterSpare();
+        tests.testSimpleStrike();
+        tests.testEndOfArray();
+        tests.testSampleGame();
         tests.testFrameLimit();
         tests.testUnfinishedSpare();
         tests.testUnfinishedStrike();
@@ -33,7 +33,7 @@ public class Tests {
         tests.testMoreThanTenPins();   
         tests.testInvalidRoll();  
         tests.testPinCountEquals();
-	}
+    }
 
     private Bowling bowling() {
         return new Configuration().game();
@@ -47,30 +47,30 @@ public class Tests {
         return new FrameId(id);
     }
 
-	private void testPerfectGame() {
-		Bowling game=bowling();
-		for (int i=0; i<12; i++)
+    private void testPerfectGame() {
+        Bowling game=bowling();
+        for (int i=0; i<12; i++)
             game.roll(pinCount(10));
-    	System.out.println("300: "+game.score());
-	}
+        System.out.println("300: "+game.score());
+    }
 
-	private void testHeartBreak()  {
-		Bowling game=bowling();
-    	for (int i=0; i<11; i++)
+    private void testHeartBreak()  {
+        Bowling game=bowling();
+        for (int i=0; i<11; i++)
             game.roll(pinCount(10));
             game.roll(pinCount(9));
-    	System.out.println("299: "+game.score());
-  	}  
+        System.out.println("299: "+game.score());
+    }  
 
-  	private void testTenthFrameSpare() {
-		Bowling game=bowling();
-	   	for (int i=0; i<9; i++)
+    private void testTenthFrameSpare() {
+        Bowling game=bowling();
+        for (int i=0; i<9; i++)
             game.roll(pinCount(10));
             game.roll(pinCount(9));
             game.roll(pinCount(1));
             game.roll(pinCount(1));
-    	System.out.println("270: "+game.score());
-  	}
+        System.out.println("270: "+game.score());
+    }
 
 	public void testTwoThrowsNoMark() {
 		Bowling game=bowling();
