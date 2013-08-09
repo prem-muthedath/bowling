@@ -8,7 +8,7 @@ import bowling.core.PinCountFactory;
 import bowling.configuration.Configuration;
 
 public class Tests {	
-	public static void main(String[] args) {
+    public static void main(String[] args) {
         Tests tests=new Tests();
         tests.testPerfectGame();
         tests.testHeartBreak();
