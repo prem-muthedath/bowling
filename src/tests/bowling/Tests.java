@@ -58,7 +58,7 @@ public class Tests {
         Bowling game=bowling();
         for (int i=0; i<11; i++)
             game.roll(pinCount(10));
-            game.roll(pinCount(9));
+        game.roll(pinCount(9));
         System.out.println("299: "+game.score());
     }  
 
@@ -66,9 +66,9 @@ public class Tests {
         Bowling game=bowling();
         for (int i=0; i<9; i++)
             game.roll(pinCount(10));
-            game.roll(pinCount(9));
-            game.roll(pinCount(1));
-            game.roll(pinCount(1));
+        game.roll(pinCount(9));
+        game.roll(pinCount(1));
+        game.roll(pinCount(1));
         System.out.println("270: "+game.score());
     }
 
