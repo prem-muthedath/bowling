@@ -18,16 +18,10 @@ public class PinSumRange {
 	}
 
 	private int maximum() {
-		return Math.min(normalMaximum(), absoluteMaximum());
+		int normalMaximum=Bowling.PINS*(1+(minimum/Bowling.PINS));
+		int absoluteMaximum=3*Bowling.PINS;
+		return Math.min(normalMaximum, absoluteMaximum);
 	}
-
-	private int normalMaximum() {
-		return Bowling.PINS*(1+(minimum/Bowling.PINS));		
-	}
-
-	private int absoluteMaximum() {
-		return 3*Bowling.PINS;
-	}	
 
 	private String message(int sum) {
 		return "EXPECTED PIN SUM: "+minimum()+" - "+maximum()+". BUT FOUND: "+sum+".";
