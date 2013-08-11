@@ -1,7 +1,7 @@
 package bowling;
 
 import bowling.core.Bowling;
-import bowling.core.FrameId;
+import bowling.core.FrameCount;
 import bowling.core.PinCount;
 import bowling.core.PinCountFactory;
 
@@ -43,8 +43,8 @@ public class Tests {
         return new PinCountFactory().create(pins);
     }
 
-    private FrameId frame(int id) {
-        return new FrameId(id);
+    private FrameCount frameCount(int id) {
+        return new FrameCount(id);
     }
 
     private void testPerfectGame() {
@@ -86,8 +86,8 @@ public class Tests {
         game.roll(pinCount(7));
         game.roll(pinCount(2));
         System.out.println("18: "+game.score());
-        System.out.println("9: "+game.score(frame(1)));
-        System.out.println("18: "+game.score(frame(2)));
+        System.out.println("9: "+game.score(frameCount(1)));
+        System.out.println("18: "+game.score(frameCount(2)));
     }
 
     public void testSimpleSpare() {
@@ -95,7 +95,7 @@ public class Tests {
         game.roll(pinCount(3));
         game.roll(pinCount(7));
         game.roll(pinCount(3));
-        System.out.println("13: "+game.score(frame(1)));
+        System.out.println("13: "+game.score(frameCount(1)));
     }
 
     public void testSimpleFrameAfterSpare() {
@@ -104,8 +104,8 @@ public class Tests {
         game.roll(pinCount(7));
         game.roll(pinCount(3));
         game.roll(pinCount(2));
-        System.out.println("13: "+game.score(frame(1)));
-        System.out.println("18: "+game.score(frame(2)));
+        System.out.println("13: "+game.score(frameCount(1)));
+        System.out.println("18: "+game.score(frameCount(2)));
         System.out.println("18: "+game.score());	
     }
 
@@ -114,7 +114,7 @@ public class Tests {
         game.roll(pinCount(10));
         game.roll(pinCount(3));
         game.roll(pinCount(6));
-        System.out.println("19: "+game.score(frame(1)));	
+        System.out.println("19: "+game.score(frameCount(1)));	
         System.out.println("28: "+game.score());	
     }
 
@@ -176,7 +176,7 @@ public class Tests {
         Bowling game=bowling();     
         game.roll(pinCount(10));
         game.roll(pinCount(5));
-        System.out.println("0: "+game.score(frame(1)));       
+        System.out.println("0: "+game.score(frameCount(1)));       
         System.out.println("0: "+game.score());
     }  
 
@@ -193,7 +193,7 @@ public class Tests {
         game.roll(pinCount(2));
         game.roll(pinCount(5));
         game.roll(pinCount(3));
-        System.out.println("7: "+game.score(frame(200)));        
+        System.out.println("7: "+game.score(frameCount(200)));        
     } 
 
     public void testZeroStrikeBonus()  {
@@ -222,7 +222,7 @@ public class Tests {
         game.roll(pinCount(3));
         game.roll(pinCount(6));        
         System.out.println("12: "+game.score());
-        System.out.println("3: "+game.score(frame(1)));
+        System.out.println("3: "+game.score(frameCount(1)));
     }  
 
     public void testInvalidFrame()  {
@@ -232,7 +232,7 @@ public class Tests {
         game.roll(pinCount(3));
         game.roll(pinCount(6));        
         System.out.println("14: "+game.score());
-        System.out.println("0: "+game.score(frame(-3)));
+        System.out.println("0: "+game.score(frameCount(-3)));
     }  
 
     public void testNegativePins()  {
@@ -241,7 +241,7 @@ public class Tests {
             game.roll(pinCount(-2));
             game.roll(pinCount(5));
             game.roll(pinCount(3));
-            System.out.println("7: "+game.score(frame(200)));  
+            System.out.println("7: "+game.score(frameCount(200)));  
         } catch(Exception e) {
             System.out.println("NEGATIVE PINS TEST: "+e.toString()+" 0: "+game.score());
         }      
@@ -255,7 +255,7 @@ public class Tests {
             game.roll(pinCount(3));
             game.roll(pinCount(6));
             game.roll(pinCount(11));
-            System.out.println("7: "+game.score(frame(200)));  
+            System.out.println("7: "+game.score(frameCount(200)));  
         } catch(Exception e) {
             System.out.println("TOO MANY PINS TEST: "+e.toString()+" 16: "+game.score());
         }      
@@ -270,7 +270,7 @@ public class Tests {
             game.roll(pinCount(7));
             game.roll(pinCount(1));
             game.roll(pinCount(10));            
-            System.out.println("7: "+game.score(frame(200)));  
+            System.out.println("7: "+game.score(frameCount(200)));  
         } catch(Exception e) {
             System.out.println("INVALID ROLL TEST: "+e.toString()+" 0: "+game.score());
         }      

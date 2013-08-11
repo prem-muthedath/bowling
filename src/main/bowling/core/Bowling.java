@@ -19,14 +19,14 @@ package bowling.core;
         return score(frames.length);
     }
 
-    public Score score(FrameId frame) {
-        return frame.score(this);
+    public Score score(FrameCount count) {
+        return count.score(this);
     }
 
-    Score score(int aFrame) {
+    Score score(int frames) {
         Score score=new Score();
-        for(int frame=0; frame < aFrame; frame++)
-            frames[frame].score(score);
+        for(int frame=0; frame < frames; frame++)
+            this.frames[frame].score(score);
         return score;
     }
 }
