@@ -17,7 +17,7 @@ public class PinCount {
 
 	private int addTo(int basePins) {
 		int sum=basePins+pins;
-		return new PinSumRange(basePins).filter(sum);
+		return new PinCountRange(basePins).filter(sum);
 	}
 
 	Ball nextBall(Ball current) {
