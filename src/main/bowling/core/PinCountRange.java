@@ -8,9 +8,8 @@ public class PinCountRange {
 	}
 
 	public int filter(int count) {
-		if(count < minimum() || count > maximum()) 
-			throw new RuntimeException(message(count));
-		return count;		
+		if(count >= minimum() && count <= maximum()) return count;
+		throw new RuntimeException(message(count));
 	}
 
 	private int minimum() {
