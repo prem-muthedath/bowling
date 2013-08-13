@@ -27,12 +27,4 @@ public class PinCount {
 	public void score(Score score) {
 		score.add(pins);
 	}
-
-	public boolean equals(Object object) {
-		return object!=null && this.getClass()==object.getClass() && this.pins==((PinCount) object).pins;
-	}
-
-	public int hashCode() {
-		return pins;
-	}		
 }

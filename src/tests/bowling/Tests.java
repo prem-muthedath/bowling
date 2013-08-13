@@ -32,7 +32,6 @@ public class Tests {
         tests.testNegativePins();
         tests.testMoreThanTenPins();   
         tests.testInvalidRoll();  
-        tests.testPinCountEquals();
     }
 
     private Bowling bowling() {
@@ -275,18 +274,4 @@ public class Tests {
             System.out.println("INVALID ROLL TEST: "+e.toString()+" 0: "+game.score());
         }      
     }  
-
-    public void testPinCountEquals()  {
-        PinCount count1=pinCount(4); 
-        PinCount count2=pinCount(10); 
-        PinCount count3=pinCount(4); 
-        PinCount count4=null; 
-        Bowling game=bowling(); 
-
-        System.out.println("FALSE: "+count1.equals(count2));  
-        System.out.println("TRUE: "+count1.equals(count3));  
-        System.out.println("FALSE: "+count1.equals(count4));  
-        System.out.println("FALSE: "+count1.equals(game)); 
-        System.out.println("TRUE: "+count1.equals(count1));  
-    }      
 }
