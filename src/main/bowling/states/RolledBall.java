@@ -6,7 +6,7 @@ import bowling.core.PinCount;
 class RolledBall extends Ball {
 	private Ball ball;
 
-	public RolledBall(Ball ball) {
+	RolledBall(Ball ball) {
 		this.ball=ball;
 	}
 

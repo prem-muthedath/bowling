@@ -1,13 +1,13 @@
 package bowling.core;
 
-public class PinCountSum {
+class PinCountSum {
 	private int augend;
 
-	public PinCountSum(int augend) {
+	PinCountSum(int augend) {
 		this.augend=augend;
 	}
 
-	public int add(int addend) {
+	int add(int addend) {
 		int sum=augend+addend;
 		if(sum >= minimum() && sum <= maximum()) return sum;
 		throw new RuntimeException(message(sum));
