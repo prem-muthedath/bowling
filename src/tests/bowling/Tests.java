@@ -3,7 +3,6 @@ package bowling;
 import bowling.core.Bowling;
 import bowling.core.FrameCount;
 import bowling.core.PinCount;
-import bowling.core.PinCountFactory;
 
 import bowling.configuration.Configuration;
 
@@ -39,7 +38,7 @@ public class Tests {
     }
 
     private PinCount pinCount(int pins) {
-        return new PinCountFactory().create(pins);
+        return PinCount.instance(pins);
     }
 
     private FrameCount frameCount(int id) {

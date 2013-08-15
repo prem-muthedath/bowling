@@ -1,11 +1,12 @@
 package bowling.core;
 
 public class Frame {	
-	private PinCount pinCount=new PinCount();
+	private PinCount pinCount;
 	private Ball ball;
 
-	public Frame(Ball first) {
+	public Frame(Ball first, PinCount none) {
 		ball=first;
+		pinCount=none;
 	}
 
 	public boolean roll(PinCount count) {
