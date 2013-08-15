@@ -4,9 +4,9 @@ public class Frame {
 	private PinCount pinCount;
 	private Ball ball;
 
-	public Frame(Ball first, PinCount none) {
+	public Frame(Ball first, PinCount initial) {
 		ball=first;
-		pinCount=none;
+		pinCount=initial;
 	}
 
 	public boolean roll(PinCount count) {
