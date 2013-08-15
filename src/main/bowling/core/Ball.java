@@ -2,13 +2,9 @@ package bowling.core;
 
 public abstract class Ball {
 	public boolean roll(Frame frame, PinCount pinCount) {
-		frame.transition(adjust(pinCount));
+		frame.transition(pinCount);
 		return rolled();
 	}
-
-	protected PinCount adjust(PinCount pinCount) {
-		return pinCount;
-	}	
 
 	protected boolean rolled() {
 		return false;
@@ -22,7 +18,9 @@ public abstract class Ball {
 		return nonMarkSuccessor();
 	}	
 
-	protected abstract Ball nonMarkSuccessor();
+	protected Ball nonMarkSuccessor() {
+		throw new RuntimeException("Undefined - nonMarkSuccessor()");				
+	}
 
 	public void score(Score score, PinCount pinCount) {}
 }
