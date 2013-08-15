@@ -2,7 +2,7 @@ package bowling.core;
 
  public class Bowling {
     public static final int FRAMES=10;
-    public static final int PINS=10;
+    static final int PINS=10;
 
     private Frame[] frames;
 
