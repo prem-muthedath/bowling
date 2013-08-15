@@ -3,11 +3,11 @@ package bowling.core;
 public class PinCount {
 	private int pins;
 
-	public PinCount() {
-		this(0);
+	public static PinCount instance(int pins) {
+		return new PinCount(0).add(new PinCount(pins));
 	}
 
-	PinCount(int pins) {
+	private PinCount(int pins) {
 		this.pins=pins;
 	}
 	
