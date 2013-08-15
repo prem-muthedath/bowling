@@ -16,9 +16,5 @@ class RolledBall extends Ball {
 
 	public Ball next(PinCount pinCount) {
 		return ball.next(pinCount);
-	}
-	
-	protected Ball nonMarkSuccessor() {
-		throw new RuntimeException("Undefined method for Rolled Ball");		
-	}
+	}	
 }
