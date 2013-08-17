@@ -14,10 +14,10 @@ public class Configuration {
 
 	private Frame[] frames() {
 		Frame[] frames=new Frame[Bowling.FRAMES];
-		for(int i=0; i < frames.length; i++) {
+		for(int frame=0; frame < frames.length; frame++) {
 			Ball first=new BallFactory().firstBall();
 			PinCount none=PinCount.instance(0);
-			frames[i]=new Frame(first, none);
+			frames[frame]=new Frame(first, none);
 		}
 		return frames;
 	}
