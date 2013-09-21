@@ -20,3 +20,19 @@ This design is also based on what I learned about OO from:
 - Dependency Injection
 - "Tell, don't ask" principle by Dave Thomas & Andy Hunt
 - Fred George's presentation at Agile India 2013 in Bangalore
+
+
+HOW TO RUN THE TESTS FROM A TERMINAL:
+
+1. cd to bowling directory -- THE TOP DIRECTORY OF THE APP, AND IT CONTAINS THIS README FILE.
+2. Type the following command to compile: 
+
+		javac -d bin -sourcepath src/main:src/tests  src/tests/bowling/Tests.java
+
+3. Press enter.
+4. Type the following command to run the tests:
+	
+	java -classpath bin bowling.Tests
+
+5. You should see the following output: Expected and Actual values for each test.
+	
