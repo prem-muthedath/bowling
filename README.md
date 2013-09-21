@@ -32,7 +32,7 @@ HOW TO RUN THE TESTS FROM A TERMINAL:
 3. Press enter.
 4. Type the following command to run the tests:
 	
-	java -classpath bin bowling.Tests
+ 		java -classpath bin bowling.Tests
 
 5. You should see the following output: Expected and Actual values for each test.
 	
