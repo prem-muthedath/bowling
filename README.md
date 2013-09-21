@@ -34,5 +34,6 @@ HOW TO RUN THE TESTS FROM A TERMINAL:
 	
  		java -classpath bin bowling.Tests
 
-5. You should see the following output: Expected and Actual values for each test.
+5. Press enter.
+6. You should see the following output: Expected and Actual values for each test.
 	
