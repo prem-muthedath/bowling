@@ -48,11 +48,17 @@ public class Tests {
     }
 
     private void printHeader() {
-        System.out.printf("%-40s %-25s  %-25s \n", "   TEST  ", "EXPECTED SCORE", "ACTUAL SCORE");
+        System.out.printf("%-40s %-25s  %-25s %-10s \n", "   TEST  ", "EXPECTED SCORE", "ACTUAL SCORE", "STATUS");
     }
 
     private void printScore(String test, int expected, Score actual) {
-        System.out.printf("%-45s %-10s %-15s %-10s \n", test, expected, "", actual);
+        System.out.printf("%-45s %-10s %-15s %-10s %-10s %-10s \n", test, expected, "", actual, "", status(expected, actual));
+    }
+
+    private String status(int expected, Score actual) {
+        if (expected==Integer.parseInt(actual.toString())) 
+            return "PASS";
+        return "FAIL";
     }
 
     private void testPerfectGame() {
