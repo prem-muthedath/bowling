@@ -52,7 +52,8 @@ public class Tests {
     }
 
     private void printScore(String test, int expected, Score actual) {
-        System.out.printf("%-45s %-10s %-15s %-10s %-10s %-10s \n", test, expected, "", actual, "", status(expected, actual));
+        System.out.printf("%-45s %-10s %-15s %-10s %-10s %-10s \n", 
+            test, expected, "", actual, "", status(expected, actual));
     }
 
     private String status(int expected, Score actual) {
