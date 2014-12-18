@@ -33,7 +33,7 @@ public class PinCount {
 		return  pins==Bowling.PINS  ?  current.markSuccessor() : current.nonMarkSuccessor();
 	}
 
-	void score(Ball ball, Score score) {
-		score.score(ball, pins);
+	int score(Ball ball) {
+		return ball.score(pins);
 	}
 }
