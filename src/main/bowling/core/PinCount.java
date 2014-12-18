@@ -22,7 +22,7 @@ public class PinCount {
 	}
 
 	private int maximum() {
-		return Bowling.PINS*(1+(minimum()/Bowling.PINS));
+		return Math.min(3*Bowling.PINS, Bowling.PINS*(1+(minimum()/Bowling.PINS)));
 	}
 
 	private String message(int count) {
