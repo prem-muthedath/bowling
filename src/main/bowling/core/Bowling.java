@@ -24,9 +24,9 @@ package bowling.core;
     }
 
     Score score(int frames) {
-        Score score=new Score();
+        int score=0;
         for(int frame=0; frame < frames; frame++)
-            this.frames[frame].score(score);
-        return score;
+            score+=this.frames[frame].score();
+        return new Score(score);
     }
 }

@@ -18,11 +18,7 @@ public class Frame {
 		ball=ball.next(pinCount);
 	}
 
-	void score(Score score) {
-		score.score(this);
-	}
-
-	int finishedScore() {
+	int score() {
 		return pinCount.score(ball);
 	}
 }

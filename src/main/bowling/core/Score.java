@@ -3,12 +3,8 @@ package bowling.core;
 public class Score {
 	private int points;
 
-	void score(Frame frame) {
-		add(frame.finishedScore());
-	}
-
-	private void add(int score) {
-		points+=score;
+	public Score(int points) {
+		this.points=points;
 	}
 
 	public String toString() {
