@@ -11,7 +11,7 @@ public class PinCount {
 		this.pins=pins;
 	}
 
-	public PinCount add(PinCount pinCount) {
+	PinCount add(PinCount pinCount) {
 		int sum=this.pins+pinCount.pins;
 		if(sum >= minimum() && sum <= maximum()) return new PinCount(sum);
 		throw new RuntimeException(message(sum));
@@ -33,7 +33,7 @@ public class PinCount {
 		return  pins==Bowling.PINS  ?  current.markSuccessor() : current.nonMarkSuccessor();
 	}
 
-	public void score(Ball ball, Score score) {
+	void score(Ball ball, Score score) {
 		score.score(ball, pins);
 	}
 }

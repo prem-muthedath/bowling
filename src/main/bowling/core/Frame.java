@@ -9,7 +9,7 @@ public class Frame {
 		pinCount=initial;
 	}
 
-	public boolean roll(PinCount count) {
+	boolean roll(PinCount count) {
 		return ball.roll(this, count);
 	}
 
@@ -18,7 +18,7 @@ public class Frame {
 		ball=ball.next(pinCount);
 	}
 
-	public void score(Score score) {
+	void score(Score score) {
 		pinCount.score(ball, score);
 	}
 }

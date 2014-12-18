@@ -16,5 +16,5 @@ class RolledBall extends Ball {
 
 	public Ball next(PinCount pinCount) {
 		return ball.next(pinCount);
-	}	
+	}
 }
