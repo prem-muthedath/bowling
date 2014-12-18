@@ -1,6 +1,6 @@
 package bowling.core;
 
-public class Frame {	
+public class Frame {
 	private PinCount pinCount;
 	private Ball ball;
 
@@ -15,10 +15,10 @@ public class Frame {
 
 	void transition(PinCount count) {
 		pinCount=pinCount.add(count);
-		ball=ball.next(pinCount);		
+		ball=ball.next(pinCount);
 	}
 
 	public void score(Score score) {
-		ball.score(score, pinCount);
-	}		
+		pinCount.score(ball, score);
+	}
 }

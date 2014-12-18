@@ -10,7 +10,7 @@ class ScoredBall extends Ball {
 		return rolled();
 	}
 
-	public void score(Score score, PinCount pinCount) {
-		pinCount.score(score);
+	public int score(int pins) {
+		return pins;
 	}
 }

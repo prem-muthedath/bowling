@@ -3,7 +3,11 @@ package bowling.core;
 public class Score {
 	private int points;
 
-	public void add(int score) {
+	public void score(Ball ball, int pins) {
+		add(ball.score(pins));
+	}
+
+	private void add(int score) {
 		points+=score;
 	}
 

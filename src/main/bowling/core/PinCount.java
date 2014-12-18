@@ -10,20 +10,30 @@ public class PinCount {
 	private PinCount(int pins) {
 		this.pins=pins;
 	}
-	
+
 	public PinCount add(PinCount pinCount) {
-		return new PinCount(pinCount.addTo(pins));
+		int sum=this.pins+pinCount.pins;
+		if(sum >= minimum() && sum <= maximum()) return new PinCount(sum);
+		throw new RuntimeException(message(sum));
 	}
 
-	private int addTo(int basePins) {
-		return new PinCountSum(basePins).add(pins);
+	private int minimum() {
+		return this.pins;
+	}
+
+	private int maximum() {
+		return Bowling.PINS*(1+(minimum()/Bowling.PINS));
+	}
+
+	private String message(int count) {
+		return "EXPECTED PIN COUNT: "+minimum()+" - "+maximum()+". BUT FOUND: "+count+".";
 	}
 
 	Ball nextBall(Ball current) {
 		return  pins==Bowling.PINS  ?  current.markSuccessor() : current.nonMarkSuccessor();
 	}
 
-	public void score(Score score) {
-		score.add(pins);
+	public void score(Ball ball, Score score) {
+		score.score(ball, pins);
 	}
 }
