@@ -1,17 +1,22 @@
 Bowling
 =======
 
-Bowling Game designed as a state machine.  
+Bowling Game designed as a state machine.
 
-I refactored Uncle Bob's code from the XP Bowling episode.  One problem I saw with Unlce Bob's code was that 
-one object was both aggregating frame scores as well as scoring each frame. 
+Uncle Bob's code from XP Bowling episode is considered a good OO design of a 
+bowling game. But one problem I saw with Unlce Bob's code was that one object 
+was both aggregating frame scores as well as scoring each frame.
 
-I tried many designs, but I found the design using the state pattern as the only satisfactory one.
+I therefore, on my own, cooked up and tried many other designs, and I eventually 
+found the design using the state pattern as the only satisfactory one.
 
 With this design, Bowling just aggregates frame scores, and the logic for scoring a frame is distributed
 between Frame and its states (Ball objects here).
 
-This design is also based on what I learned about OO from:
+The design is also quite robust: (a) it does not score incomplete frames; and 
+(b) it checks for invalid pin counts, frame scores, as well as frame counts.
+
+The design is largely based on what I learned about OO from:
 
 - Kent Beck's Implementation Patterns
 - Kent Beck's Test-Driven Development
@@ -24,16 +29,18 @@ This design is also based on what I learned about OO from:
 
 HOW TO RUN THE TESTS FROM A TERMINAL:
 
-1. cd to bowling directory -- the top directory of the app containing this README file.
-2. Type the following command to compile: 
+1. `cd` to bowling directory -- the top directory containing this README file.
+2. Create an empty `bin` directory at the same level as this README file. this 
+   is needed for the compilation command in step 3 below.
+3. Type the following command to compile:
 
-		javac -d bin -sourcepath src/main:src/tests  src/tests/bowling/Tests.java
+      javac -d bin -sourcepath src/main:src/tests  src/tests/bowling/Tests.java
 
-3. Press enter.
-4. Type the following command to run the tests:
-	
- 		java -classpath bin bowling.Tests
+4. Press enter.
+5. Type the following command to run the tests:
 
-5. Press enter.
-6. You will see the following output: Expected & Actual scores and PASS/FAIL status for each test.
-	
+      java -classpath bin bowling.Tests
+
+6. Press enter.
+7. You will see the Expected & Actual scores and PASS/FAIL status for each test.
+

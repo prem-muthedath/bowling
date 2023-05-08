@@ -276,7 +276,7 @@ import java.util.List;
   }
 
   // get the next state, represented by a Ball object, to transition to.
-  // 'mark' means 'strike' or 'spare' in bowling terminlogy.
+  // 'mark' means 'strike' or 'spare' in bowling terminology.
   // notice how we just compute if the score is a mark here, and then delegate 
   // the actual state computation to Ball? this is the essence of good OOP.
   private Ball nextBall() {
