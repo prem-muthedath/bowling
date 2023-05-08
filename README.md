@@ -34,12 +34,14 @@ HOW TO RUN THE TESTS FROM A TERMINAL:
    is needed for the compilation command in step 3 below.
 3. Type the following command to compile:
 
-      javac -d bin -sourcepath src/main:src/tests  src/tests/bowling/Tests.java
+     ````
+     javac -d bin -sourcepath src/main:src/tests  src/tests/bowling/Tests.java
 
 4. Press enter.
 5. Type the following command to run the tests:
 
-      java -classpath bin bowling.Tests
+     ````
+     java -classpath bin bowling.Tests
 
 6. Press enter.
 7. You will see the Expected & Actual scores and PASS/FAIL status for each test.
