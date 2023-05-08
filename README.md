@@ -30,8 +30,8 @@ The design is largely based on what I learned about OO from:
 HOW TO RUN THE TESTS FROM A TERMINAL:
 
 1. `cd` to bowling directory -- the top directory containing this README file.
-2. Create an empty `bin` directory at the same level as this README file. this 
-   is needed for the compilation command in step 3 below.
+2. If a `bin` directory does not exist, create an empty `bin` directory at the 
+   same level as this README file. this is needed for compilation in step 3.
 3. Type the following command to compile:
 
      ````
