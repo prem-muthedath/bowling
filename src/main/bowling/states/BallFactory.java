@@ -18,8 +18,8 @@ import bowling.core.Ball;
  * author: Prem Muthedath
  * */
 public class BallFactory {
-  /* returns the first or initial Frame state, where the Frame is awaiting it's 
-   * 1st ball to be physically rolled in it.
+  /* returns the first ball or initial Frame state, where the Frame is awaiting 
+   * it's 1st ball to be physically rolled in it.
    */
   public Ball firstBall() {
     return new RolledBall(new Ball() {
