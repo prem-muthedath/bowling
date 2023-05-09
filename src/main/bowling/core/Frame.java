@@ -3,40 +3,45 @@ package bowling.core;
 import java.util.ArrayList;
 import java.util.List;
 
-/* this class models a frame in the bowling game.
+/**
+ * this class models a frame in the bowling game.
  *
  * the Frame object records its 'pins', just as a bowling game frame would.
  *
- * the Frame object here is modeled as a state machine that undergoes state 
- * transitions in response to applicable "current" ball-roll events iin the 
- * bowling game. the unique "Ball" object within a Frame represents the current 
- * Frame state. typically, a Frame starts off in the 'first ball' state, where 
- * it is awaiting the first ball to be rolled in it. after its first ball roll 
- * (not same as the first ball roll in the game, unless it is the first Frame), 
- * the Frame may transition to other states, such as 'second ball' state, 'first 
- * strike bonus ball', etc. typical current Frame states, for example, include 
- * 'first ball', 'second ball', 'first strike bonus ball', 'spare bonus ball', 
- * 'scored ball', etc. `BallFactory` class in bowling.states package creates 
- * instances of all possible Frame states.
+ * Frame is modeled as a state machine that undergoes state transitions in 
+ * response to applicable "current" -- i.e., the most recent -- ball roll events 
+ * in the bowling game. the unique "Ball" object within a Frame represents 
+ * Frame's current state. typically, a Frame starts off in the 'first ball' 
+ * state, where it is awaiting it's 1st ball to be physically rolled in it.  
+ * after its 1st ball roll (not same as the first ball roll in the game, unless 
+ * it is the first Frame), the Frame may transition to other states, such as 
+ * 'second ball' state, 'first strike bonus ball', etc. typical Frame states, 
+ * for example, include 'first ball', 'second ball', 'first strike bonus ball', 
+ * 'spare bonus ball', 'scored ball', etc.  `BallFactory` in bowling.states 
+ * package creates instances of all possible Frame states.
  *
- * the Frame object, working with its state, the Ball object, computes its own 
- * score, which is Frame's primary responsibility. depending on the Frame 
- * object's state, the reported score (to clients), however, may differ from the 
- * calculated one. for example, when a Frame is in a state of being scored, the 
- * reported score will be 0 even though the calculated one may be > 0. this is 
- * so because Frame scores reported are final scores, and reporting a final 
- * score for a Frame whose final score is still being determined is meaningless!  
- * in such cases, reporting 0 for Frame score is the only practical solution.
+ * Frame, working with its state, the Ball object, computes its own score, which 
+ * is Frame's primary responsibility. depending on the Frame's state, the 
+ * reported score (to clients), however, may differ from the calculated one. for 
+ * example, when a Frame is in a state of being scored, the reported score will 
+ * be 0 even though the calculated one may be > 0. this is so because Frame 
+ * scores reported are final scores, and reporting a final score for a Frame 
+ * whose final score is still being determined is meaningless!  in such cases, 
+ * reporting 0 for Frame score is the only practical solution.
  *
- * the Frame object updates its score (i.e, its collection of pin counts) 
- * whenever an "applicable" ball roll event in the bowling game affects its 
- * state, meaning the Frame undergoes a state transition. an "applicable" ball 
- * roll event implies either an actual physical ball roll in the frame or a 
- * bonus ball, in case of strike and spare, rolled in the following frames.  
+ * Frame updates its score (i.e, its pin count collection) whenever an 
+ * "applicable" current ball roll event in the bowling game affects its state, 
+ * meaning the Frame undergoes a state transition. an "applicable" current ball 
+ * roll event implies either an actual physical ball roll in the frame itself or 
+ * a bonus ball, in case of strike and spare, rolled in following frames. in 
+ * this design, once a Frame has received its 1st physical ball roll, the Frame 
+ * will then continue to receive all subsequent ball roll notifications in the 
+ * game, even ones where the physical ball roll has happened elsewhere. Frame 
+ * will either score these rolls or ignore them, depending on Frame state.  
  * typically, whenever the Frame is notified of a ball roll (i.e., the current 
- * roll), Frame's current state (the `Ball`) will dictate if the current roll 
- * needs to be scored or ignored. if it decides YES, then the Frame will update 
- * its collection of pin counts, and then based on its new score, the current 
+ * roll in the game), Frame's current state (the `Ball`) will dictate if the 
+ * current roll should be scored or ignored. if it decides YES, then Frame will 
+ * update its pin count collection, and then based on its new score, current 
  * state will transition to the next state. if, on the other hand, the current 
  * state decides NO, then there will be no change of state as well as score.
  *
@@ -49,23 +54,28 @@ import java.util.List;
   private List<Integer> pins; // list of pin counts, each slot corresponds to a roll
   private Ball ball;          // current state
 
-  // constructor with package visibility.
-  // package visibility limits creation of invalid Frame objects, because 
-  // objects outside the package can not -- and need not -- create a Frame.
+  /* constructor with package visibility.
+   * package visibility limits creation of invalid Frame objects, because 
+   * objects outside the package can not -- and need not -- create a Frame.
+   */
   Frame(Ball first) {
     this.ball=first;                    // first ball state
     this.pins=new ArrayList<Integer>(); // stores pin counts from applicable rolls
   }
 
-  // this function represents a message to the Frame object about the no of pins 
-  // felled in a single ball-roll event (i.e., the current roll) that has 
-  // occurred in the bowling game. all frames in active play, which includes the 
-  // frame where the current ball in the game was physically rolled as well as 
-  // all the preceeding frames, receive this message. if the current roll has 
-  // physically happened in a specific Frame instance (Frame instance's state 
-  // determines this), then this function in that instance will return true; 
-  // otherwise not. depending on Frame state as well as roll validity, this call 
-  // will either trigger score & state changes or will be completely ignored.
+  /* process (record/ignore) the current ball roll event in the bowling game.
+   * returns `true` if the current ball roll physically happened in this Frame.
+   *
+   * this function represents a message to the Frame object about the no of pins 
+   * felled in a single ball-roll event (i.e., the current roll) that has 
+   * occurred in the bowling game. all frames in active play, which includes the 
+   * frame where the current ball in the game was physically rolled as well as 
+   * all the preceeding frames, receive this message. if the current roll has 
+   * physically happened in a specific Frame instance (Frame instance's state 
+   * determines this), then this function in that instance will return true; 
+   * otherwise not. depending on Frame state as well as roll validity, this call 
+   * will either trigger score & state changes or will be completely ignored.
+   */
   boolean roll(int pins) {
     // we first go ahead and blindly add these pin counts from this current roll 
     // for now. but this decision's correctness depends on the state of the 
@@ -91,7 +101,7 @@ import java.util.List;
     return this.ball.transition(this);
   }
 
-  // do a state transition if everything is just fine; else throw an exception. 
+  /* transition state if everything is just fine; else throw an exception. */
   void transition() {
     // first, validate added pins from current roll BEFORE a change of state!!
     //
@@ -121,18 +131,18 @@ import java.util.List;
     this.ball=this.nextBall();
   }
 
-  // discard the most recently added pins.
+  /* discard the most recently added pins. */
   public void ignoreCurrentRoll() {
     if (this.pins.size() == 0) return;
     this.pins.remove(this.pins.size() - 1);
   }
 
-  // report frame's score. the actual value reported depends on Frame's state.
+  /* report frame's score -- actual value reported depends on Frame's state. */
   int score() {
     return this.ball.score(this.computeScore());
   }
 
-  // compute current score
+  /* compute current score */
   private int computeScore() {
     int tot = 0;
     for (int i = 0; i < this.pins.size(); i++) {
@@ -141,27 +151,27 @@ import java.util.List;
     return tot;
   }
 
-  // compute score before current roll.
+  /* compute score before current roll. */
   private int computePrevScore() {
     if (this.pins.size() == 0) return 0;
     return this.computeScore() - this.pins.get(this.pins.size() - 1);
   }
 
-  // check if the current count of pins is valid. if not, throw an exception.
+  /* check if the current count of pins is valid. if not, throw an exception. */
   private void validate() {
-    int sum = this.computeScore();
-    if (sum >= this.minimum() && sum <= this.maximum()) return;
+    int current = this.computeScore();
+    if (current >= this.minimum() && current <= this.maximum()) return;
     this.ignoreCurrentRoll();
-    // we pass `sum` because it retains the bad pins even after rollback.
-    throw new RuntimeException(this.errMessage(sum));
+    // we pass `current` because it retains the bad pins even after rollback.
+    throw new RuntimeException(this.errMessage(current));
   }
 
-  // compute minimum value for current score.
+  /* compute minimum value of current score. */
   private int minimum() {
     return Math.max(0, this.computePrevScore());
   }
 
-  // compute maximum value for current score.
+  /* compute maximum value of current score. */
   private int maximum() {
     // given the previous Frame score, can we compute the upper bound for 
     // Frame's score for the current roll? and can we use this computed upper 
@@ -268,19 +278,20 @@ import java.util.List;
     return Math.min(3*Bowling.PINS, Bowling.PINS*(1+(this.minimum()/Bowling.PINS)));
   }
 
-  // error message for bad current score caused by the "bad" current roll.
+  /* error message for bad current score caused by the "bad" current roll. */
   private String errMessage(int count) {
     return "INVALID CURRENT ROLL => FRAME: " + this +
       ", EXPECTED PIN COUNT RANGE (AFTER ROLL): "
       + minimum() + " - " + maximum() + " BUT FOUND: " + count + ".";
   }
 
-  // get the next state, represented by a Ball object, to transition to.
-  // 'mark' means 'strike' or 'spare' in bowling terminology.
-  // notice how we just compute if the score is a mark here, and then delegate 
-  // the actual state computation to Ball? this is the essence of good OOP.
+  /* get the next state, represented by a Ball object, to transition to. */
   private Ball nextBall() {
-    boolean mark = this.computeScore() == Bowling.PINS;
+   /* 'mark' means 'strike' or 'spare' in bowling terminology.
+    * notice how we just compute if score is a mark here, and then delegate the 
+    * actual state computation to Ball? this is the essence of good OOP.
+    */
+   boolean mark = this.computeScore() == Bowling.PINS; // strike or spare?
     return this.ball.next(mark);
   }
 }
