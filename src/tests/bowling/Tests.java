@@ -3,7 +3,8 @@ package bowling;
 import bowling.core.Bowling;
 import bowling.core.FrameCount;
 
-/* `Tests` class has all unit tests for the bowling game.
+/**
+ * `Tests` class has all unit tests for the bowling game.
  *
  * you can run all the tests in one shot by calling the main method in this 
  * class. test results will be printed to the console in an easy-to-read format.
@@ -39,6 +40,9 @@ public class Tests {
     tests.testNegativePinsLater();
     tests.testMoreThanTenPins();
     tests.testInvalidRoll();
+    tests.testInvalidRollAfterSpare();
+    tests.testInvalidRollAfterStrike();
+    tests.testGT10PinsAfterSpare();
     tests.testGT10PinsAfterStrike();
   }
 
@@ -299,6 +303,8 @@ public class Tests {
         game.roll(pinCount(3));
         game.roll(pinCount(6));
         game.roll(pinCount(11)); // 11 > 10
+        game.roll(pinCount(1));
+        game.roll(pinCount(3));
         printScore("testMoreThanTenPins: NO EXCEPTION THROWN", 0, game.score());
     } catch(Exception e) {
         printScore("testMoreThanTenPins: EXCEPTION THROWN", 16, game.score());
@@ -309,19 +315,36 @@ public class Tests {
     // this method is expected to throw an exception which is then caught.
     Bowling game=bowling();
     try {
-        game.roll(pinCount(10));
+        game.roll(pinCount(1));
+        game.roll(pinCount(5));
+        game.roll(pinCount(6));
+        game.roll(pinCount(7)); // 6 + 7 = 13 > 10, can NOT happen!
+        game.roll(pinCount(3));
+        game.roll(pinCount(4));
+        printScore("testInvalidRoll: NO EXCEPTION THROWN", -10, game.score());
+    } catch(Exception e) {
+        printScore("testInvalidRoll: EXCEPTION THROWN", 6, game.score());
+    }
+  }
+
+  public void testInvalidRollAfterSpare()  {
+    // this method is expected to throw an exception which is then caught.
+    Bowling game=bowling();
+    try {
+        game.roll(pinCount(4));
+        game.roll(pinCount(6));
         game.roll(pinCount(5));
         game.roll(pinCount(6)); // can NOT happen, b'coz 5 + 6 = 11 > 10
         game.roll(pinCount(7));
         game.roll(pinCount(1));
         game.roll(pinCount(10));
-        printScore("testInvalidRoll: NO EXCEPTION THROWN", 10, game.score());
+        printScore("testInvalidRollAfterSpare: NO EXCEPTION THROWN", 10, game.score());
     } catch(Exception e) {
-        printScore("testInvalidRoll: EXCEPTION THROWN", 0, game.score());
+        printScore("testInvalidRollAfterSpare: EXCEPTION THROWN", 15, game.score());
     }
   }
 
-  public void testGT10PinsAfterStrike() {
+  public void testInvalidRollAfterStrike() {
     // this method is expected to throw an exception which is then caught.
     Bowling game=bowling();
     try {
@@ -344,9 +367,57 @@ public class Tests {
         game.roll(pinCount(10));  // strike
         game.roll(pinCount(3));
         game.roll(pinCount(9)); // 3 + 9 = 12 > 10
+        printScore("testInvalidRollAfterStrike: NO EXCEPTION THROWN", 0, game.score());
+    } catch(Exception e) {
+        printScore("testInvalidRollAfterStrike: EXCEPTION THROWN", 120, game.score());
+    }
+  }
+
+  public void testGT10PinsAfterSpare()  {
+    // this method is expected to throw an exception which is then caught.
+    Bowling game=bowling();
+    try {
+        game.roll(pinCount(2));
+        game.roll(pinCount(6));
+        game.roll(pinCount(4));
+        game.roll(pinCount(6));  // spare: 4 + 6 = 10
+        game.roll(pinCount(15)); // > 10 pins after spare
+        game.roll(pinCount(6));
+        game.roll(pinCount(7));
+        game.roll(pinCount(1));
+        game.roll(pinCount(10));
+        printScore("testGT10PinsAfterSpare: NO EXCEPTION THROWN", -10, game.score());
+    } catch(Exception e) {
+        printScore("testGT10PinsAfterSpare: EXCEPTION THROWN", 8, game.score());
+    }
+  }
+
+  public void testGT10PinsAfterStrike() {
+    // this method is expected to throw an exception which is then caught.
+    Bowling game=bowling();
+    try {
+        game.roll(pinCount(2));
+        game.roll(pinCount(4));
+        game.roll(pinCount(4));
+        game.roll(pinCount(5));
+        game.roll(pinCount(6));
+        game.roll(pinCount(4));
+        game.roll(pinCount(5));
+        game.roll(pinCount(5));
+        game.roll(pinCount(10));
+        game.roll(pinCount(0));
+        game.roll(pinCount(1));
+        game.roll(pinCount(7));
+        game.roll(pinCount(3));
+        game.roll(pinCount(6));
+        game.roll(pinCount(4));
+        game.roll(pinCount(10));
+        game.roll(pinCount(10));  // strike
+        game.roll(pinCount(3));
+        game.roll(pinCount(19));  // 19 > 10
         printScore("testGT10PinsAfterStrike: NO EXCEPTION THROWN", 0, game.score());
     } catch(Exception e) {
-        printScore("testGT10PinsAfterStrike: EXCEPTION THROWN", 120, game.score());
+        printScore("testGT10PinsAfterStrike: EXCEPTION THROWN", 121, game.score());
     }
   }
 }
