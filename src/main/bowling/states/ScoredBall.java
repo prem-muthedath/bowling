@@ -3,7 +3,8 @@ package bowling.states;
 import bowling.core.Ball;
 import bowling.core.Frame;
 
-/* represents the state of a Frame that has been fully scored, meaning the Frame 
+/**
+ * represents the state of a Frame that has been fully scored, meaning the Frame 
  * is no longer in play and therefore not accpeting anymore rolls.
  *
  * see `BallFactory` in bowling.states package on `ScoredBall` creation.
@@ -16,18 +17,20 @@ import bowling.core.Frame;
  * */
 
 class ScoredBall extends Ball {
-  // `ScoredBall` state does not ask it's associated Frame to transition state, 
-  // because this state is the final Frame state, and the Frame's score is final 
-  // as well; instead, it asks the Frame to ignore the current roll, meaning to  
-  // ignore or rollback any pins the Frame has added from the current roll. in 
-  // this way, ScoredBall ensures no change to Frame's state and score.
+  /* `ScoredBall` state does not ask it's associated Frame to transition state, 
+   * because this state is the final Frame state, and the Frame's score is final 
+   * as well; instead, it asks the Frame to ignore the current roll, meaning to  
+   * ignore or rollback any pins the Frame has added from the current roll. in 
+   * this way, ScoredBall ensures no change to Frame's state and score.
+   */
   protected boolean transition(Frame associatedFrame) {
     associatedFrame.ignoreCurrentRoll();
     return rolled();  // calls the default `rolled()` in `Ball`.
   }
 
-  // the `ScoredBall` state reports the `Frame` score as is, without any change, 
-  // because the `Frame` is fully scored in this state, and it's score is final.
+  /* the `ScoredBall` state reports the `Frame` score as is, without any change, 
+   * because the `Frame` is fully scored in this state, and it's score is final.
+   */
   protected int score(int frameScore) {
     return frameScore;
   }

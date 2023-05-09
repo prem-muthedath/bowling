@@ -2,7 +2,8 @@ package bowling.states;
 
 import bowling.core.Ball;
 
-/* represents the state of a Frame that is waiting to receive the current ball 
+/**
+ * represents the state of a Frame that is waiting to receive the current ball 
  * roll in the bowling game; i.e., the state of a frame that is waiting for the 
  * current ball in the bowling game to be physically rolled in it. a Frame 
  * starts off in the `RolledBall` state, waiting for it's 1st roll.
@@ -29,25 +30,28 @@ import bowling.core.Ball;
 class RolledBall extends Ball {
   private Ball ball;
 
-  // `BallFactory` class in bowling.states package makes `RolledBall` instances.
+  /* `BallFactory` in bowling.states package makes `RolledBall` instances. */
   RolledBall(Ball ball) {
     this.ball=ball;
   }
 
-  // was the current ball physically rolled in RolledBall's associated Frame?
-  // yes, `true` for both 1st & 2nd balls rolled in a Frame.
+  /* was the current ball physically rolled in RolledBall's associated Frame?
+   * yes, `true` for both 1st & 2nd balls rolled in a Frame.
+   */
   protected boolean rolled() {
     return true;
   }
 
-  // delegates to it's `Ball` object to find the next state.
-  // 'mark' in bowling terminology means strike or spare.
+  /* delegates to it's `Ball` object to find the next state.
+   * 'mark' in bowling terminology means strike or spare.
+   */
   public Ball markSuccessor() {
     return this.ball.markSuccessor();
   }
 
-  // delegates to it's `Ball` object to find the next state.
-  // 'mark' in bowling terminology means strike or spare.
+  /* delegates to it's `Ball` object to find the next state.
+   * 'mark' in bowling terminology means strike or spare.
+   */
   public Ball nonMarkSuccessor() {
     return this.ball.nonMarkSuccessor();
   }

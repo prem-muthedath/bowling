@@ -2,7 +2,8 @@ package bowling.states;
 
 import bowling.core.Ball;
 
-/* `BallFactory` class makes instances of all Ball subclasses. since Ball 
+/**
+ * `BallFactory` class makes instances of all Ball subclasses. since Ball 
  * objects form Frame states, this class can also be seen as the object that 
  * knows how to make instances of all possible Frame states in the bowling game.
  *
@@ -17,8 +18,9 @@ import bowling.core.Ball;
  * author: Prem Muthedath
  * */
 public class BallFactory {
-  // returns the first or initial Frame state, where the Frame is awaiting it's 
-  // 1st ball to be physically rolled in it.
+  /* returns the first or initial Frame state, where the Frame is awaiting it's 
+   * 1st ball to be physically rolled in it.
+   */
   public Ball firstBall() {
     return new RolledBall(new Ball() {
       public Ball markSuccessor() {    // next state if 1st ball is a strike
@@ -31,8 +33,9 @@ public class BallFactory {
     });
   }
 
-  // returns the second ball Frame state, where the Frame is awaiting it's 2nd 
-  // ball to be physically rolled in it.
+  /* returns the second ball Frame state, where the Frame is awaiting it's 2nd 
+   * ball to be physically rolled in it.
+   */
   Ball secondBall() {
     return new RolledBall(new Ball() {
       public Ball markSuccessor() {    // next state if 2nd ball results in a spare 
@@ -45,7 +48,7 @@ public class BallFactory {
     });
   }
 
-  // returns Frame state where the Frame is awaiting it's 1st strike bonus ball. 
+  /* returns Frame state where Frame is awaiting it's 1st strike bonus ball. */
   Ball firstStrikeBonusBall() {
     return new Ball() {
       public Ball nonMarkSuccessor() {  // next state after 1st strike bonus ball
@@ -54,7 +57,7 @@ public class BallFactory {
     };
   }
 
-  // returns Frame state where the Frame is awaiting it's 2nd strike bonus ball.
+  /* returns Frame state where Frame is awaiting it's 2nd strike bonus ball. */
   Ball secondStrikeBonusBall() {
     return new Ball() {
       public Ball nonMarkSuccessor() {  // next state after 2nd strike bonus ball
@@ -63,7 +66,7 @@ public class BallFactory {
     };
   }
 
-  // returns Frame state where the Frame is awaiting its spare bonus ball.
+  /* returns Frame state where Frame is awaiting its spare bonus ball. */
   Ball spareBonusBall() {
     return new Ball() {
       public Ball nonMarkSuccessor() {  // next state after spare bonus ball
@@ -72,7 +75,7 @@ public class BallFactory {
     };
   }
 
-  // returns state of a fully-scored Frame.
+  /* returns state of a fully-scored Frame. */
   Ball scoredBall() {
     return new ScoredBall();
   }
