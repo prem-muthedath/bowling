@@ -13,8 +13,11 @@ package bowling.core;
  * author: Prem Muthedath
  * */
  public class Bowling {
-  public static final int FRAMES=10;  // max no of frames in the game
-  static final int PINS=10;           // # of pins to knock out for each frame.
+  /** total number of frames in the game. */
+  public static final int FRAMES=10;
+
+  /* number of pins to knock out in a frame. */
+  static final int PINS=10;
 
   private Frame[] frames;             // array of frames
 
@@ -27,7 +30,7 @@ package bowling.core;
     this.frames=java.util.Arrays.copyOfRange(frames, 0, Bowling.FRAMES);
   }
 
-  /* create a valid Bowling instance.
+  /** create a valid Bowling instance.
    * clients should call this class method to get a Bowling instance.
    * in haskell parlance, this class method is known as a "smart" constructor.
    */
@@ -35,7 +38,7 @@ package bowling.core;
     return new Configuration().newGame();
   }
 
-  /* record/score a ball roll event in the bowling game.
+  /** record/score the current ball roll event in the bowling game.
    *
    * when a ball roll event occurs in the game, Bowling informs its Frame 
    * objects about the event, so that they may record/score the roll. in this 
@@ -66,7 +69,7 @@ package bowling.core;
     }
   }
 
-  /* compute current game score.
+  /** compute current game score.
    * Note: game score totals scores of all frames, but frames that are still 
    * being scored will report their score as 0, even though their actual pin 
    * count may be > 0. these frames do so simply because their final scores are 
@@ -77,7 +80,7 @@ package bowling.core;
     return score(this.frames.length);
   }
 
-  /* compute total score for specified number of frames, starting from first.
+  /** compute total score for specified number of frames, starting from first.
    * Note: frames numbered 0 - 9; score computed only for frames that are fully 
    * scored. for example, if you call score(FrameCount(4)), then score will 
    * aggregate scores of frames numbered 0 - 3 (i.e., the first 4 frames) that 
