@@ -1,7 +1,6 @@
-Bowling
-=======
+#### Bowling
 
-Bowling Game designed as a state machine.
+Bowling game designed as a state machine.
 
 Uncle Bob's code from XP Bowling episode is considered a good OO design of a 
 bowling game. But one problem I saw with Unlce Bob's code was that one object 
@@ -10,11 +9,12 @@ was both aggregating frame scores as well as scoring each frame.
 I therefore, on my own, cooked up and tried many other designs, and I eventually 
 found the design using the state pattern as the only satisfactory one.
 
-With this design, Bowling just aggregates frame scores, and the logic for scoring a frame is distributed
-between Frame and its states (Ball objects here).
+With this design, Bowling just aggregates frame scores, and the logic for 
+scoring a frame is distributed between Frame and its states (Ball objects here).
 
-The design is also quite robust: (a) it does not score incomplete frames; and 
-(b) it checks for invalid pin counts, frame scores, as well as frame counts.
+The design accommodates your usual needs: (a) you can score a game in progress 
+as well as a completed one; (b) it does not tally incomplete frame scores; and 
+(c) it checks for invalid pin counts, frame scores, and frame counts.
 
 The design is largely based on what I learned about OO from:
 
@@ -27,10 +27,10 @@ The design is largely based on what I learned about OO from:
 - Fred George's presentation at Agile India 2013 in Bangalore
 
 
-HOW TO RUN THE TESTS FROM A TERMINAL:
+##### HOW TO RUN THE TESTS FROM A TERMINAL:
 
 1. `cd` to bowling directory -- the top directory containing this README file.
-2. If a `bin` directory does not exist, create an empty `bin` directory at the 
+2. If you do not have a `bin` directory, create an empty `bin` directory at the 
    same level as this README file. this is needed for compilation in step 3.
 3. Type the following command to compile:
 
