@@ -176,9 +176,9 @@ import java.util.List;
 
   /* compute maximum value of current score. */
   private int maximum() {
-    /* given the previous Frame score, can we compute the upper bound for 
-     * Frame's score for the current roll? and can we use this computed upper 
-     * bound to validate the current Frame score?
+    /* given the total Frame score before the current roll, can we compute the 
+     * upper bound for the current Frame score that includes the current roll?  
+     * and can we use this upper bound to validate the current Frame score?
      *
      * my formula below for max value of a frame's current score provides one 
      * good, handy way to check if the current score we are seeing for a frame 
