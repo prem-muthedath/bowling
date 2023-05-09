@@ -296,11 +296,11 @@ import java.util.List;
 
   /* get the next state, represented by a Ball object, to transition to. */
   private Ball nextBall() {
-   /* 'mark' means 'strike' or 'spare' in bowling terminology.
-    * notice how we just compute if score is a mark here, and then delegate the 
-    * actual state computation to Ball? this is the essence of good OOP.
-    */
-   boolean mark = this.computeScore() == Bowling.PINS; // strike or spare?
+    /* 'mark' means 'strike' or 'spare' in bowling terminology.
+     * notice how we just compute if score is a mark here, and then delegate the 
+     * actual state computation to Ball? this is the essence of good OOP.
+     */
+    boolean mark = this.computeScore() == Bowling.PINS; // strike or spare?
     return this.ball.next(mark);
   }
 }
