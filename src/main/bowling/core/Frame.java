@@ -8,17 +8,22 @@ import java.util.List;
  *
  * the Frame object records its 'pins', just as a bowling game frame would.
  *
- * Frame is modeled as a state machine that undergoes state transitions in 
+ * the Frame is modeled as a state machine that undergoes state transitions in 
  * response to applicable "current" -- i.e., the most recent -- ball roll events 
  * in the bowling game. the unique "Ball" object within a Frame represents 
  * Frame's current state. typically, a Frame starts off in the 'first ball' 
  * state, where it is awaiting it's 1st ball to be physically rolled in it.  
- * after its 1st ball roll (not same as the first ball roll in the game, unless 
- * it is the first Frame), the Frame may transition to other states, such as 
- * 'second ball' state, 'first strike bonus ball', etc. typical Frame states, 
- * for example, include 'first ball', 'second ball', 'first strike bonus ball', 
- * 'spare bonus ball', 'scored ball', etc.  `BallFactory` in bowling.states 
- * package creates instances of all possible Frame states.
+ * until this first physical ball roll happens in the Frame, the Frame keeps 
+ * waiting, but it does not receive any ball roll notifications, and nothing 
+ * really changes in the Frame, and it's score remains 0. after its 1st ball 
+ * roll (not same as the first ball roll in the game, unless it is the first 
+ * Frame), the Frame transitions to other states, such as 'second ball' state, 
+ * 'first strike bonus ball', etc. finally, when the Frame has been fully 
+ * scored, it transitions to a 'scored ba;ll' state, after which neither it's 
+ * state nor it's score changes anymore. typical Frame states, for example, 
+ * include 'first ball', 'second ball', 'first strike bonus ball', 'spare bonus 
+ * ball', 'scored ball', etc. `BallFactory` in bowling.states package creates 
+ * instances of all possible Frame states.
  *
  * Frame, working with its state, the Ball object, computes its own score, which 
  * is Frame's primary responsibility. depending on the Frame's state, the 
