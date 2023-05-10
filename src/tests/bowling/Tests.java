@@ -16,6 +16,7 @@ public class Tests {
   public static void main(String[] args) {
     Tests tests=new Tests();
     tests.printHeader();
+    tests.testUnplayedGame();
     tests.testPerfectGame();
     tests.testHeartBreak();
     tests.testTenthFrameSpare();
@@ -70,6 +71,11 @@ public class Tests {
   private String status(int expected, int actual) {
     if (expected==actual) return "PASS";
     return "FAIL";
+  }
+
+  private void testUnplayedGame() {
+    Bowling game = bowling();
+    printScore("testUnplayedGame", 0, game.score());
   }
 
   private void testPerfectGame() {
