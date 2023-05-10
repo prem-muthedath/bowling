@@ -17,13 +17,14 @@ import bowling.core.Frame;
  * */
 
 class ScoredBall extends Ball {
-  /* `ScoredBall` state does not ask it's associated Frame to transition state, 
-   * because this state is the final Frame state, and the Frame's score is final 
-   * as well; instead, it asks the Frame to ignore the current roll, meaning to  
-   * ignore or rollback any pins the Frame has added from the current roll. in 
-   * this way, ScoredBall ensures no change to Frame's state and score.
+  /* when notified of a current ball roll event in the game, `ScoredBall` state 
+   * does not ask it's associated Frame to transition state, because this state 
+   * is the final Frame state, and the Frame's score is final as well; instead, 
+   * it asks the Frame to ignore the current roll, meaning to ignore or rollback 
+   * any pins the Frame has added from the current roll. in this way, 
+   * `ScoredBall` ensures no change to Frame's state and score.
    */
-  protected boolean transition(Frame associatedFrame) {
+  protected boolean roll(Frame associatedFrame) {
     associatedFrame.ignoreCurrentRoll();
     return rolled();  // calls the default `rolled()` in `Ball`.
   }

@@ -36,16 +36,18 @@ package bowling.core;
  * */
 
 public abstract class Ball {
-  /* transition associated Frame's state.
-   * returns true if this transition call was triggered when the current ball in 
-   * the bowling game was physically rolled in this Ball's associated Frame.
+  /* notifies `Ball` of a current ball roll event in the game.
+   * returns true if `Ball`, the current Frame state, is a rolled ball state, 
+   * signaling that the current ball was rolled physically in the Frame.
+   * default implementation transitions Frame state; subclasses may override.
    */
-  protected boolean transition(Frame associatedFrame) {
+  protected boolean roll(Frame associatedFrame) {
     associatedFrame.transition();
     return rolled();
   }
 
-  /* was the current ball physically rolled in this Ball's associated Frame?
+  /* is this a rolled ball state?
+   * in a rolled ball state, the Frame awaits a physical ball roll in it.
    * default, it returns `false`. subclasses may override this behavior.
    */
   protected boolean rolled() {

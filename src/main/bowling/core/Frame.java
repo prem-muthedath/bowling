@@ -98,15 +98,15 @@ import java.util.List;
 
     /* as mentioned earlier, the current state of the Frame, the Ball object, 
      * decides if the Frame should include pin counts from the current roll, 
-     * which is why the code here calls `ball.transition(this)`. if the state 
-     * decides YES, then it will invoke the `transition()` method in Frame, 
-     * which will lead to acceptance of pin counts from the current roll as well 
-     * as a transition to a new state based on the new score of Frame. if, on 
-     * the other hand, the state decides NO, it (i.e., the Ball object) will 
-     * call `ignoreCurrentRollt()` method in Frame, which will discard pins we 
-     * had earlier included from current roll, and state will remain unchanged.
+     * which is why the code here calls `ball.roll(this)`. if the state decides 
+     * YES, then it will invoke the `transition()` method in Frame, which will 
+     * lead to acceptance of pin counts from the current roll as well as a 
+     * transition to a new state based on the new score of Frame. if, on the 
+     * other hand, the state decides NO, it (i.e., the Ball object) will call 
+     * `ignoreCurrentRollt()` method in Frame, which will discard pins we had 
+     * earlier included from current roll, and state will remain unchanged.
      */
-    return this.ball.transition(this);
+    return this.ball.roll(this);
   }
 
   /* transition state if everything is just fine; else throw an exception. */
