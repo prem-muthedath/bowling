@@ -7,6 +7,15 @@ import bowling.core.Ball;
  * objects form Frame states, this class can also be seen as the object that 
  * knows how to make instances of all possible Frame states in the bowling game.
  *
+ * by reading the method names and their implementations below, you can quickly 
+ * get an idea of the basic logic behind an actual bowling game, including how a 
+ * frame is scored. for example, you start off with `firstBall()`, and if you 
+ * get a strike in your first ball, you transition to `firstStrikeBonusBall()`, 
+ * which then transitions to `secondStrikeBonusBall()`, which finally 
+ * transitions to `scoredBall()`, the final state. from this you can see that a 
+ * strike happens when you score a 10 in your first roll in the frame, and then 
+ * you get 2 bonus balls to complete your frame score.
+ *
  * NOTE: many or most methods below use anonymous class definitions to avoid 
  * defining a long list of subclasses that require separate files.
  *
