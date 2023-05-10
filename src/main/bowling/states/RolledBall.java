@@ -35,8 +35,8 @@ class RolledBall extends Ball {
     this.ball=ball;
   }
 
-  /* is this a rolled ball state?
-   * in a rolled ball state, the Frame awaits a physical ball roll in it.
+  /* is this a 'rolled ball' state?
+   * in a 'rolled ball' state, the Frame awaits a physical ball roll in it.
    * yes, `true` for both 1st & 2nd balls rolled in a Frame.
    */
   protected boolean rolled() {

@@ -37,8 +37,9 @@ package bowling.core;
 
 public abstract class Ball {
   /* notifies `Ball` of a current ball roll event in the game.
-   * returns true if `Ball`, the current Frame state, is a rolled ball state, 
-   * signaling that the current ball was rolled physically in the Frame.
+   * returns true if `Ball`, the current Frame state, is a 'rolled ball' state, 
+   * where Frame is awaiting a physical ball roll in it. a `true` return value, 
+   * therefore, indicates that current ball was physically rolled in the Frame.
    * default implementation transitions Frame state; subclasses may override.
    */
   protected boolean roll(Frame associatedFrame) {
@@ -46,8 +47,8 @@ public abstract class Ball {
     return rolled();
   }
 
-  /* is this a rolled ball state?
-   * in a rolled ball state, the Frame awaits a physical ball roll in it.
+  /* is this a 'rolled ball' state?
+   * in a 'rolled ball' state, the Frame awaits a physical ball roll in it.
    * default, it returns `false`. subclasses may override this behavior.
    */
   protected boolean rolled() {
