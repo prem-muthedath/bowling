@@ -20,6 +20,8 @@ public class Tests {
     tests.testPerfectGame();
     tests.testHeartBreak();
     tests.testTenthFrameSpare();
+    tests.testTenthFrameStrike();
+    tests.testNinthFrameSrike();
     tests.testTwoThrowsNoMark();
     tests.testFourThrowsNoMark();
     tests.testSimpleSpare();
@@ -101,6 +103,30 @@ public class Tests {
     game.roll(pinCount(1));
     game.roll(pinCount(1));
     printScore("testTenthFrameSpare", 270, game.score());
+  }
+
+  private void testTenthFrameStrike() {
+    // https://programmingpraxis.com/2009/08/11/uncle-bobs-bowling-game-kata/
+    // 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 10,1,0 (A strike in the 10th frame should = 11)
+    Bowling game = bowling();
+    for (int i=0; i<18; i++)
+      game.roll(pinCount(0));
+    game.roll(pinCount(10));
+    game.roll(pinCount(1));
+    game.roll(pinCount(0));
+    printScore("testTenthFrameStrike", 11, game.score());
+  }
+
+  private void testNinthFrameSrike() {
+    // https://programmingpraxis.com/2009/08/11/uncle-bobs-bowling-game-kata/
+    // 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 10, 1,0 (A strike in the 9th frame should = 12)
+    Bowling game = bowling();
+    for (int i=0; i<16; i++)
+      game.roll(pinCount(0));
+    game.roll(pinCount(10));
+    game.roll(pinCount(1));
+    game.roll(pinCount(0));
+    printScore("testNinthFrameSrike", 12, game.score());
   }
 
   public void testTwoThrowsNoMark() {
