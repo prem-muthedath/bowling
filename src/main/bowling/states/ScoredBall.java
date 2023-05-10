@@ -5,7 +5,7 @@ import bowling.core.Frame;
 
 /**
  * represents the state of a Frame that has been fully scored, meaning the Frame 
- * is no longer in play and therefore not accpeting anymore rolls.
+ * is no longer in play and therefore not scoring anymore rolls.
  *
  * see `BallFactory` in bowling.states package on `ScoredBall` creation.
  *

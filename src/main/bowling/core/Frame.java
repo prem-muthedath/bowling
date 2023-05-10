@@ -14,16 +14,17 @@ import java.util.List;
  * Frame's current state. typically, a Frame starts off in the 'first ball' 
  * state, where it is awaiting it's 1st ball to be physically rolled in it.  
  * until this first physical ball roll happens in the Frame, the Frame keeps 
- * waiting, but it does not receive any ball roll notifications, and nothing 
- * really changes in the Frame, and it's score remains 0. after its 1st ball 
- * roll (not same as the first ball roll in the game, unless it is the first 
- * Frame), the Frame transitions to other states, such as 'second ball' state, 
- * 'first strike bonus ball', etc. finally, when the Frame has been fully 
- * scored, it transitions to a 'scored ba;ll' state, after which neither it's 
- * state nor it's score changes anymore. typical Frame states, for example, 
- * include 'first ball', 'second ball', 'first strike bonus ball', 'spare bonus 
- * ball', 'scored ball', etc. `BallFactory` in bowling.states package creates 
- * instances of all possible Frame states.
+ * waiting, but it does not receive any current ball roll notifications, and 
+ * nothing really changes in the Frame, and it's score remains 0. after its 1st 
+ * ball roll (not same as the first ball roll in the game, unless it is the 
+ * first Frame), however, the Frame begins to receive all current ball roll 
+ * notifications in the game, and it experiences state transitions -- such as 
+ * 'second ball' state, 'first strike bonus ball' state, etc -- and score 
+ * changes. finally, when the Frame has been fully scored, it transitions to a 
+ * 'scored ball' state, after which neither it's state nor it's score changes 
+ * anymore. typical Frame states, for example, include 'first ball', 'second 
+ * ball', 'first strike bonus ball', 'spare bonus ball', 'scored ball', etc.  
+ * `BallFactory` in bowling.states package makes instances of all Frame states.
  *
  * Frame, working with its state, the Ball object, computes its own score, which 
  * is Frame's primary responsibility. depending on the Frame's state, the 
