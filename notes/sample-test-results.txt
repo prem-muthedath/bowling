@@ -1,52 +1,52 @@
-   TEST                                  EXPECTED SCORE             ACTUAL SCORE              STATUS     
-testUnplayedGame                              0                          0                     PASS       
-testPerfectGame                               300                        300                   PASS       
-testHeartBreak                                299                        299                   PASS       
-testTenthFrameSpare                           270                        270                   PASS       
-testNinthFrameSpare                           25                         25                    PASS       
-testTenthFrameStrike                          13                         13                    PASS       
-testNinthFrameSrike                           14                         14                    PASS       
-testTwoThrowsNoMark                           9                          9                     PASS       
-testFourThrowsNoMark - GAME                   18                         18                    PASS       
-testFourThrowsNoMark - FRAMES: 1              9                          9                     PASS       
-testFourThrowsNoMark - FRAMES: 2              18                         18                    PASS       
-testSimpleSpare - GAME                        13                         13                    PASS       
-testSimpleSpare - FRAMES: 1                   13                         13                    PASS       
-testSimpleFrameAfterSpare - GAME              18                         18                    PASS       
-testSimpleFrameAfterSpare - FRAMES: 1         13                         13                    PASS       
-testSimpleFrameAfterSpare - FRAMES: 2         18                         18                    PASS       
-testSimpleStrike - GAME                       28                         28                    PASS       
-testSimpleStrike - FRAMES: 1                  19                         19                    PASS       
-testTenthFrameSpareAndStrike                  20                         20                    PASS       
-testSampleGame -- GAME                        133                        133                   PASS       
-testSampleGame - FRAMES: 200                  133                        133                   PASS       
-testAllDucks                                  0                          0                     PASS       
-testFrameLimit                                20                         20                    PASS       
-testUnfinishedSpare -- GAME                   3                          3                     PASS       
-testUnfinishedSpare - FRAMES: 2               3                          3                     PASS       
-testUnfinishedStrike - GAME                   0                          0                     PASS       
-testUnfinishedStrike - FRAMES: 1              0                          0                     PASS       
-testUnfinishedOpen -- GAME                    3                          3                     PASS       
-testUnfinishedOpen - FRAMES: 2                3                          3                     PASS       
-testZeroStrikeBonus                           10                         10                    PASS       
-testZeroSpareBonus                            30                         30                    PASS       
-testValidFrameCount - GAME                    12                         12                    PASS       
-testValidFrameCount - FRAMES: 1               3                          3                     PASS       
-testZeroFrameCount - GAME                     14                         14                    PASS       
-testZeroFrameCount - FRAMES: 0                0                          0                     PASS       
-testGT10FrameCount - GAME                     200                        40                    FAIL       
-testGT10FrameCount - FRAMES: 100              200                        40                    FAIL       
-testNegativeFrameCount - GAME                 14                         14                    PASS       
-testNegativeFrameCount - FRAMES: -3           0                          0                     PASS       
-testNegativePinsAtStart: EXCEPTION THROWN     0                          0                     PASS       
-testNegativePinsAtStart - FRAMES: 1 : ERR     0                          0                     PASS       
-testNegativePinsLater: EXCEPTION THROWN       7                          7                     PASS       
-testNegativePinsLater - FRAMES: 2 : ERR       7                          7                     PASS       
-testMoreThanTenPins: EXCEPTION THROWN         16                         16                    PASS       
-testMoreThanTenPins - FRAMES: 3 : ERR         16                         16                    PASS       
-testInvalidRoll: EXCEPTION THROWN             6                          6                     PASS       
-testInvalidRoll - FRAMES: 2 : ERR             6                          6                     PASS       
-testInvalidRollAfterSpare: EXCEPTION THROWN   15                         15                    PASS       
-testInvalidRollAfterStrike: EXCEPTION THROWN  120                        120                   PASS       
-testGT10PinsAfterSpare: EXCEPTION THROWN      8                          8                     PASS       
-testGT10PinsAfterStrike: EXCEPTION THROWN     121                        121                   PASS       
+   TEST                                  EXPECTED SCORE             ACTUAL SCORE              STATUS
+testUnplayedGame                              0                          0                     PASS
+testPerfectGame                               300                        300                   PASS
+testHeartBreak                                299                        299                   PASS
+testTenthFrameSpare                           270                        270                   PASS
+testNinthFrameSpare                           25                         25                    PASS
+testTenthFrameStrike                          13                         13                    PASS
+testNinthFrameSrike                           14                         14                    PASS
+testTwoThrowsNoMark                           9                          9                     PASS
+testFourThrowsNoMark - GAME                   18                         18                    PASS
+testFourThrowsNoMark - FRAMES: 1              9                          9                     PASS
+testFourThrowsNoMark - FRAMES: 2              18                         18                    PASS
+testSimpleSpare - GAME                        13                         13                    PASS
+testSimpleSpare - FRAMES: 1                   13                         13                    PASS
+testSimpleFrameAfterSpare - GAME              18                         18                    PASS
+testSimpleFrameAfterSpare - FRAMES: 1         13                         13                    PASS
+testSimpleFrameAfterSpare - FRAMES: 2         18                         18                    PASS
+testSimpleStrike - GAME                       28                         28                    PASS
+testSimpleStrike - FRAMES: 1                  19                         19                    PASS
+testTenthFrameSpareAndStrike                  20                         20                    PASS
+testSampleGame -- GAME                        133                        133                   PASS
+testSampleGame - FRAMES: 200                  133                        133                   PASS
+testAllDucks                                  0                          0                     PASS
+testFrameLimit                                20                         20                    PASS
+testUnfinishedSpare -- GAME                   3                          3                     PASS
+testUnfinishedSpare - FRAMES: 2               3                          3                     PASS
+testUnfinishedStrike - GAME                   0                          0                     PASS
+testUnfinishedStrike - FRAMES: 1              0                          0                     PASS
+testUnfinishedOpen -- GAME                    3                          3                     PASS
+testUnfinishedOpen - FRAMES: 2                3                          3                     PASS
+testZeroStrikeBonus                           10                         10                    PASS
+testZeroSpareBonus                            30                         30                    PASS
+testValidFrameCount - GAME                    12                         12                    PASS
+testValidFrameCount - FRAMES: 1               3                          3                     PASS
+testZeroFrameCount - GAME                     14                         14                    PASS
+testZeroFrameCount - FRAMES: 0                0                          0                     PASS
+testGT10FrameCount - GAME                     40                         40                    PASS
+testGT10FrameCount - FRAMES: 100              40                         40                    PASS
+testNegativeFrameCount - GAME                 14                         14                    PASS
+testNegativeFrameCount - FRAMES: -3           0                          0                     PASS
+testNegativePinsAtStart: EXCEPTION THROWN     0                          0                     PASS
+testNegativePinsAtStart - FRAMES: 1 : ERR     0                          0                     PASS
+testNegativePinsLater: EXCEPTION THROWN       7                          7                     PASS
+testNegativePinsLater - FRAMES: 2 : ERR       7                          7                     PASS
+testMoreThanTenPins: EXCEPTION THROWN         16                         16                    PASS
+testMoreThanTenPins - FRAMES: 3 : ERR         16                         16                    PASS
+testInvalidRoll: EXCEPTION THROWN             6                          6                     PASS
+testInvalidRoll - FRAMES: 2 : ERR             6                          6                     PASS
+testInvalidRollAfterSpare: EXCEPTION THROWN   15                         15                    PASS
+testInvalidRollAfterStrike: EXCEPTION THROWN  120                        120                   PASS
+testGT10PinsAfterSpare: EXCEPTION THROWN      8                          8                     PASS
+testGT10PinsAfterStrike: EXCEPTION THROWN     121                        121                   PASS
