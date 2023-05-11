@@ -44,5 +44,6 @@ The design is largely based on what I learned about OO from:
      java -classpath bin bowling.Tests
 
 6. Press enter.
-7. You will see the Expected & Actual scores and PASS/FAIL status for each test.
+7. You will see the Expected & Actual scores and PASS/FAIL status for each test 
+   (see notes/sample-test-results.txt for a sample test output).
 
