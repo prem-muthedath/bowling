@@ -314,8 +314,8 @@ public class Tests {
     for (int i=0; i<20; i++) {
       game.roll(pinCount(2));
     }
-    printScore("testGT10FrameCount - GAME", 200, game.score());
-    printScore("testGT10FrameCount - FRAMES: 100", 200, game.score(frameCount(100)));
+    printScore("testGT10FrameCount - GAME", 40, game.score());
+    printScore("testGT10FrameCount - FRAMES: 100", 40, game.score(frameCount(100)));
   }
 
   public void testNegativeFrameCount()  {
