@@ -155,7 +155,7 @@ import java.util.List;
   private int computeScore() {
     int tot = 0;
     for (int i = 0; i < this.pins.size(); i++) {
-      tot = tot + this.pins.get(i).intValue();
+      tot += this.pins.get(i).intValue();
     }
     return tot;
   }
