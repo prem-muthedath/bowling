@@ -6,8 +6,8 @@ Uncle Bob's code from XP Bowling episode is considered a good OO design of a
 bowling game. But one problem I saw with Unlce Bob's code was that one object 
 was both aggregating frame scores as well as scoring each frame.
 
-I therefore, on my own, cooked up and tried many other designs, and I eventually 
-found the design using the state pattern as the only satisfactory one.
+I therefore, cooked up and tried many other designs, and I eventually found the 
+design using the state pattern as the only satisfactory one.
 
 With this design, Bowling just aggregates frame scores, and the logic for 
 scoring a frame is distributed between Frame and its states (Ball objects here).
