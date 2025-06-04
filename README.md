@@ -2,12 +2,14 @@
 
 Bowling game designed as a state machine.
 
-Uncle Bob's code from XP Bowling episode is considered a good OO design of a 
-bowling game. But one problem I saw with Unlce Bob's code was that one object 
-was both aggregating frame scores as well as scoring each frame.
+Uncle Bob's code from XP Bowling episode is widely considered as a solid OO 
+design for a bowling game (see `notes/uncle-bob-bowling-game-code.txt`). But I 
+happened to spot one problem with it -- a single object was both aggregating 
+frame scores as well as scoring each frame, mixing two distinct 
+responsibilities.
 
-I therefore, cooked up and tried many other designs, and I eventually found the 
-design using the state pattern as the only satisfactory one.
+I, therefore, explored several designs, and I eventually found the design using 
+the state pattern as the only satisfactory one.
 
 With this design, Bowling just aggregates frame scores, and the logic for 
 scoring a frame is distributed between Frame and its states (Ball objects here).
@@ -16,7 +18,7 @@ The design accommodates your usual needs: (a) you can score a game in progress
 as well as a completed one; (b) it does not tally incomplete frame scores; and 
 (c) it checks for invalid pin counts, frame scores, and frame counts.
 
-The design is largely based on what I learned about OO from:
+The design uses my own ideas about OO as well as the stuff that I learned from:
 
 - Kent Beck's Implementation Patterns
 - Kent Beck's Test-Driven Development
@@ -29,9 +31,10 @@ The design is largely based on what I learned about OO from:
 
 ##### HOW TO RUN THE TESTS FROM A TERMINAL:
 
-1. `cd` to bowling directory -- the top directory containing this README file.
-2. If you do not have a `bin` directory, create an empty `bin` directory at the 
-   same level as this README file. this is needed for compilation in step 3.
+1. `cd` into project root -- the top directory containing this README file.
+2. If you do not already have a `bin` directory there, create an empty `bin` 
+   directory at the same level as this README file. This is needed for 
+   compilation in step 3.
 3. Type the following command to compile:
 
      ````
@@ -44,6 +47,6 @@ The design is largely based on what I learned about OO from:
      java -classpath bin bowling.Tests
 
 6. Press enter.
-7. You will see the Expected & Actual scores and PASS/FAIL status for each test 
-   (see `notes/sample-test-results.txt` for a sample test output).
+7. You will see Expected & Actual scores and PASS/FAIL status for each test (see 
+   `notes/sample-test-results.txt` for a sample test output).
 
